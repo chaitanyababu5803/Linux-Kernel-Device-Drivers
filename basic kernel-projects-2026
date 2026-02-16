@@ -1,0 +1,54 @@
+https://computers-art.medium.com/writing-a-basic-kernel-6479a495b713
+Writing a basic kernel
+inux kernel basic project with code
+Building a Linux Kernel Module (LKM) is the standard "Hello World" project for kernel development. Unlike standard C programs, these run in kernel space, meaning they have direct hardware access but no access to standard libraries like stdio.h. 
+1. The Kernel Module Code (hello.c)
+Create a file named hello.c. This simple script logs a message when the module is loaded and another when it is removed. 
+c
+#include <linux/init.h>   // Macros for module_init and module_exit
+#include <linux/module.h> // Core header for loading modules
+#include <linux/kernel.h> // Contains KERN_INFO log level
+
+// Metadata for the kernel
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("A Basic Hello World Kernel Module");
+
+// Called when the module is loaded (insmod)
+static int __init hello_init(void) {
+    printk(KERN_INFO "Hello, Kernel! Module loaded successfully.\n");
+    return 0; // 0 indicates success
+}
+
+// Called when the module is removed (rmmod)
+static void __exit hello_exit(void) {
+    printk(KERN_INFO "Goodbye, Kernel! Module removed.\n");
+}
+
+module_init(hello_init);
+module_exit(hello_exit);
+Use code with caution.
+
+2. The Makefile
+Kernel modules require a specific build process using the kbuild system. Create a file named Makefile (capital 'M') in the same directory. 
+makefile
+obj-m += hello.o
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+Use code with caution.
+
+3. Build and Run Steps
+To test your project, follow these terminal commands: 
+Compile: Run make. This generates a hello.ko (Kernel Object) file.
+Load: Run sudo insmod hello.ko. This inserts the module into the running kernel.
+Verify: Run dmesg | tail. You should see "Hello, Kernel!" in the logs.
+List: Run lsmod | grep hello to confirm it is active.
+Unload: Run sudo rmmod hello.
+Verify Removal: Run dmesg | tail again to see the "Goodbye" message. 
+Core Development Tips
+Safety: Never test new kernel code on a production machine. Use a VirtualBox VM or QEMU to avoid system crashes (kernel panics).
+Logging: Since you can't use printf, use printk. View these logs in real-time with dmesg -w.

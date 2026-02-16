@@ -1,0 +1,636 @@
+LINUX Firewall
+Last Updated : 23 Jul, 2025
+Linux OS, we must know that it is a system based on Unix-like. Systems that are called Unix-like or Unix-based are designed to behave and function similarly to the Unix OS. Linux OS comes under the open-source family (code designed to be publicly accessible) and is based on the Linux kernel. It was initially released on September 17, 1991, by Linus Torvalds.
+
+It has a modular design, which helps us with system customization according to our needs. Linux is open-source software that has helped in the growth and development of our developer community which is contributing to the open-source community. It also offers a command line interface for interacting with OS and also has a graphical interface for users who are not used to working with the command line interface.
+
+What is Linux Firewall (firewalld)
+A virtual wall in the security system world is designed to protect our system from unwanted traffic and unauthorized access to our system. The security system in Linux OS is known as Linux Firewall, which monitors and governs the network traffic (outbound/inbound connections). It can be used to block access to different IP addresses, Specific subnets, ports (virtual points where network connections begin and end), and services. We have a daemon's name called Firewalld which is used to maintain the firewall policies. A dynamically managed firewall tool in a Linux system is known as Firewalld, it can be updated in real-time if there are any changes in the network environment.
+
+This Firewalld works in concepts of zones (segments). We can check whether our firewall services are running or not by using the commands sudo (user access) and systemctl (use to control and manage the status of services).
+
+sudo systemctl status firewalld
+command to check the running status of our Firewalld services.
+Command to check the running status of our Firewalld services.
+output showing services actively running 
+Here is the output showing services actively running 
+Some rules of Firewall
+To protect our system from unauthorized access and to control network traffic (incoming and outgoing). We can do customization in ports, addresses, protocols, etc. some common examples are listed below:
+
+Rule 1: Allowing SSH (Secure Shell or Secure Socket Shell) traffic
+By using this we can allow all incoming traffic on the SHH port so that we can connect to the system remotely.
+
+sudo firewall-cmd --zone=public --add-services=ssh --permanent
+sudo firewall-cmd --reload
+As we can see it is done successfully 
+As we can see it is done successfully 
+Rule 2: Allowing incoming traffic on a specific port
+We are allowing traffic on a specific TCP port 8080 you can replace it with requirements.
+
+sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+Both the command showed success
+Both the command showed success
+Rule 3: Blocking incoming traffic on a specific IP address
+We are blocking incoming traffic on IP 192.168.52.1 you can replace it with your requirements.
+
+sudo firewall-cmd --zone=public --add-rich='rule family="ipv4" source address="192.168.52.1" reject'
+sudo firewall-cmd --reload
+we have also mentioned family of IP (ipv4
+we have also mentioned family of IP (ipv4)
+Types of Linux Firewalls
+There is more than one Linux firewall option available. When we come to drop down and research, we have a few popular names IPCop, iptables, Shorewall, and UFW But one of the most popular is the "iptables" firewall.
+
+Iptables Working:
+Linux-based software that performs manipulation functions, packet filtering, and NAT (network address translation) is known as Iptables. With the help of Iptables which allows system administrators to control incoming and outgoing traffic by setting up the rules. 
+
+When a packet is received in a Linux base system, it has to go through the chains and tables in the iptables firewall. The most commonly used tables are filter and nat but we have five predefined tables in iptables (raw, nat, filter, security, and mangle).
+
+Types of Tables
+We will discuss five predefined tables:
+
+Security Table: It is often used in conjunction with other security tools like SELinux, it is also used for MAC (Mandatory Access Control) rules, which can further be used to set rules related to security labels and access controls. It has four built-in chains: OUTPUT, FORWARD, INPUT, and SECMARK.
+Mangle Table: It is used to modify packets by setting the packet's ToS/DSCP field, altering packet header fields, and changing packet marks. It has Five built-in chains: POSTROUTING, FORWARD, OUTPUT, PREROUTING, and INPUT.
+Nat Table: It stands for network address translation, which helps in sharing a single public IP address between multiple devices. It has two built-in chains: PREROUTING and POSTROUTING.
+Raw Table: It is used for the configuration of low-level packet processing. It has limited built-in chains, but the user can create additional chains if required.
+Filter Table: It is used for packet filtering. It has three built-in chains. INPUT, OUTPUT, and FORWARD.
+Here filters are responsible for filtering the packets on the defined rules based on the source and destination of the IP address, port number, and protocol type. And Chains there are three different types of built-in chains.
+
+Types of Chains
+Chain Rule: Rules that are described for a particular task. Subdivided into three types:
+
+INPUT: Filter incoming traffic in the local system.
+OUTPUT: Filter Outgoing traffic for the local system.
+FORWARD: Packets forwarded from one system to another go throw it.
+Configure a Firewall on Linux OS
+We will be configuring iptables in our operating system.
+
+To install iptables
+
+ sudo dnf install iptables 
+This command is use to install iptables
+This command is use to install iptables
+Basic Syntax for using iptables
+
+sudo iptables [option] CHAIN-rule [-j target]
+Note: 
+
+Output Chains: Traffic going through local machines has to pass through these output chains.
+Input Chains: Traffic has to go from every rule that has been assigned within input chains.
+Forward Chains: Traffic going from the arising network location to another network location has to pass through forward chains.
+We have some common iptables options
+
+Options	Descriptions
+-C	[CHECK]: This is to check and find a rule that matches the requirements of the string.
+-D	[DELETE]: This is used to delete a specific rule.
+-A	[APPEND]: This is used to append or add rules.
+-I	[INSERT]: This can add a rule to a particular position in a string.
+-L	 [LIST]: To display all the rules we can use this.
+-v	[VERBOSE]: This is used to get more information in the list option.
+-X	[DELETE CHAIN]: This deletes the entire supplied string.
+-p	[Protocol_name]: It is used to define the name of the protocol.
+-N	[NEW CHAIN]: To create a new chain.
+-j	[job]: It tells what operation has to be done with the packet.
+-F	[Flush]: It is to delete all rules.
+-s	[specify]: It is a flag used to specify the source of the packet. 
+Common Firewall Issues and Troubleshooting Tips
+We have three basic Policies. Let's discuss Some Basic Operations and their Syntax
+
+DROP: It can block an incoming signal, which basically states that the firewall is blocked for that particular IP.
+ACCEPT: It allows the IP we provide to make users go into the system.
+REJECT: It works similarly to Drop, but in 'drop' the sender is blocked without any notification whereas in 'reject' a message states the reason for not being able to connect.
+Some basic operations and their syntax
+Creating our first rule
+The first rule to allow incoming ICMP (ping) traffic on the INPUT chain:
+
+sudo iptables -A INPUT -p icmp -j ACCEPT
+Uses '-A' to append the rule at the end of the INPUT chain. '-p icmp' tells that rule is applying to ICMP traffic. '-j ACCEPT' tells you to accept(allow) any traffic that matches the rule.
+
+CREATE FIRST RULE iptables
+CREATE FIRST RULE iptables
+The syntax for using policies
+# Refer context mentioned above to see the use-case of [ -I , -A , -p , -s ,-j ] 
+sudo iptables -I/-A name_chain -s source_ip -p protocol_name --dport port_number -j action_to_do 
+Example:
+Accept Rule: If we have to accept an IP (source) 192.168.160.51 on port number 22 using TCP protocol. 
+
+sudo iptables -A INPUT -s 192.168.160.51 -p tcp --dport 22 -j ACCEPT
+TO CHECK  OUTPUT WE USED $ sudo iptables -L
+TO CHECK OUTPUT, WE USED $ sudo iptables -L
+Drop Rule: If we have to Drop an IP (source) 192.168.160.51.
+
+sudo iptables -A/-I chain_name -s source_ip -j action_to_do
+As we can see 192.168.160.51 has been drop
+As we can see 192.168.160.51 has been drop
+Reset Rule: To reset all iptables rule we use -F.
+
+sudo iptables -F
+Click to enlarge
+As we can see all the rules has been reset
+
+
+
+
+
+******************
+iptables command in Linux with Examples
+Last Updated : 11 Jul, 2025
+The iptables command in Linux is a powerful tool that is used for managing the firewall rules and network traffic. It facilitates allowing the administrators to configure rules that help how packets are filtered, translated, or forwarded. On using this iptables, you can set up security policies to control incoming and outgoing traffic, define port forwarding, and implement network address translation (NAT). It's essential for securing servers and networks by selectively permitting or denying specific types of traffic based on defined rules and conditions. This flexibility makes iptables a fundamental component in Linux networking and security configurations.
+
+In this article, we are going discuss on what are iptables, the total tables in Iptables, and built-in chains in tables of iptables. What are the common parameters in the table and then discuss the filters of iptables, discussing why to use the iptables and its benefits effectively.
+
+Table of Content
+
+What are iptables?
+Tables in Iptables
+Built-in Chains of Tables in Iptables
+Examples of Iptables Commands with Common Parameters
+Filters of Iptables
+Why use Iptables in Linux?
+Benefits of Using iptable Command
+Features of Iptables
+Usecases of Iptables
+What are iptables?
+It is a command line interface used to set up and maintain tables for the Netfilter firewall for IPv4, included in the Linux kernel. The firewall matches packets with rules defined in these tables and then takes the specified action on a possible match.
+
+Tables is the name for a set of chains.
+Chain is a collection of rules.
+Rule is condition used to match packet.
+Target is action taken when a possible rule matches. Examples of the target are ACCEPT, DROP, QUEUE.
+Policy is the default action taken in case of no match with the inbuilt chains and can be ACCEPT or DROP.
+Syntax
+iptables --table TABLE -A/-C/-D... CHAIN rule --jump Target
+Tables in Iptables
+There are five possible tables as follows:
+
+filter: Default used table for packet filtering. It includes chains like INPUT, OUTPUT and FORWARD.
+nat : Related to Network Address Translation. It includes PREROUTING and POSTROUTING chains.
+mangle : For specialised packet alteration. Inbuilt chains include PREROUTING and OUTPUT.
+raw : Configures exemptions from connection tracking. Built-in chains are PREROUTING and OUTPUT.
+security : Used for Mandatory Access Control
+Built-in Chains of Tables in Iptables
+There are few built-in chains that are included in tables. They are:
+
+INPUT : A set of rules for packets destined to localhost sockets.
+FORWARD :for packets routed through the device.
+OUTPUT : It is locally generated packets, meant to be transmitted outside.
+PREROUTING : It is used for modifying packets as they arrive.
+POSTROUTING : IIt helps in modifying packets as they are leaving.
+User-defined Chains
+User-defined chains can also be created. The following are the some of the possible one with examples:
+
+1. -A, --append : Append to the chain provided in parameters.
+
+Syntax
+
+iptables [-t table] --append [chain] [parameters]
+Example:
+
+This command drops all the traffic coming on any port.
+
+iptables -t filter --append INPUT -j DROP
+Output
+
+
+
+appending the chain parameters
+
+2. -D, --delete : Delete rule from the specified chain.
+
+Syntax
+
+iptables [-t table] --delete [chain] [rule_number]
+Example:
+
+This command deletes the rule 2 from INPUT chain.
+
+iptables -t filter --delete INPUT 2
+Output
+
+deleting the chains in iptables
+
+
+3. -C, --check :Check if a rule is present in the chain or not. It returns 0 if the rule exists and returns 1 if it does not. Syntax:
+
+iptables [-t table] --check [chain] [parameters]
+Example:
+
+This command checks whether the specified rule is present in the INPUT chain.
+
+iptables -t filter --check INPUT -s 192.168.1.123 -j DROP
+Output
+
+checking the rules
+Examples of Iptables Commands with Common Parameters
+The iptables command uses parameters to match packets and define actions. Key parameters include -p or --proto, which specify the protocol of the packet, such as tcp, udp, icmp, ssh, etc. This parameter allows administrators to selectively filter or handle packets based on their communication protocol. The common parameters are:
+
+1. -p, --proto : is the protocol that the packet follows. Possible values maybe: tcp, udp, icmp, ssh etc. Syntax:
+
+iptables [-t table] -A [chain] -p {protocol_name} [target]
+Example:
+
+This command appends a rule in the INPUT chain to drop all udp packets.
+
+iptables -t filter -A INPUT -p udp -j DROP
+Output
+
+proto parameter of iptable
+
+
+2. -s, --source: is used to match with the source address of the packet.
+
+Syntax
+
+iptables [-t table] -A [chain] -s {source_address} [target]
+Example:
+
+This command appends a rule in the INPUT chain to accept all packets originating from 192.168.1.230.
+
+iptables -t filter -A INPUT -s 192.168.1.230 -j ACCEPT
+Output
+
+source parameter with iptable
+
+
+3. -d, --destination : is used to match with the destination address of the packet.
+
+Syntax
+
+iptables [-t table] -A [chain] -d {destination_address} [target]
+Example:
+
+This command appends a rule in the OUTPUT chain to drop all packets destined for 192.168.1.123.
+
+iptables -t filter -A OUTPUT -d 192.168.1.123 -j DROP
+Output
+
+--destination parameter in iptables
+
+
+4. -i, --in-interface : matches packets with the specified in-interface and takes the action. Syntax:
+
+iptables [-t table] -A [chain] -i {interface} [target]
+Example:
+
+This command appends a rule in the INPUT chain to drop all packets destined for wireless interface.
+
+iptables -t filter -A INPUT -i wlan0 -j DROP
+Output
+
+interface parameter in iptable
+
+
+5. -o, --out-interface : matches packets with the specified out-interface.
+
+6. -j, --jump : this parameter specifies the action to be taken on a match.
+
+Syntax
+
+iptables [-t table] -A [chain] [parameters] -j {target}
+Example:
+
+This command adds a rule in the FORWARD chain to drop all packets.
+
+iptables -t filter -A FORWARD -j DROP
+Output
+
+--jump parameter with iptables
+
+
+Filters of Iptables
+The following are the filters of iptables:
+
+1. While trying out the commands, you can remove all filtering rules and user created chains.
+
+sudo iptables --flush
+iptable flushing
+2. To save the iptables configuration use:
+
+sudo iptables-save
+saving the configuration of iptables
+3. Restoring iptables config can be done with:
+
+sudo iptables-restore
+There are other interfaces such ipv6 tables which are used to manage filtering tables for IPv6.
+restoring the iptable
+Why use Iptables in Linux?
+The following are the some of the reasons to use Iptables in Linux:
+
+Firewall Configuration: It helps in enabling the precise control over the netowrk traffic to protect against unauthorized access and attacks.
+Packet Filtering: It allows in filtering based on the criteria like protocol, IP addresses and prots providing the security.
+Network Address translation (NAT): It facilitates with seamless communication between different network segments.
+Logging and Monitoring: It provides the insights into the network activity for providing feature sof security auditing and troubleshooting.
+Benefits of Using iptable Command
+The following are the benefits of using iptable command:
+
+Robust Firewall Capabilities: It facilitates with configuration of firewall rules to control incoming and outgoing traffic, enhancing network security.
+Precise Packet Filtering: It provides the filtering based on criteria such as protocol, source/destination IP addresses, and ports, ensuring only authorized traffic passes through.
+Network Address Translation (NAT): It supports NAT functionality for translating IP addresses and ports, essential for network connectivity and management.
+Logging and Monitoring: It provides logging capabilities to monitor and analyze network traffic, aiding in security auditing and troubleshooting.
+Features of Iptables
+The following are the some of the features of Iptables:
+
+Packet Filtering: Iptables facilitates with providing filtering features for network packets based on various criteria such as source and destination IP addresses and ports.
+NAT: Iptables supports the NAT by allowing for the translation of the private IP address to public address making an essential for devices within a private network to establish the communication with external networks.
+Stateful Inspection: Through stateful inspection, iptables helps in tracking the state of network connections with providing the enhanced security by legitimating the traffic that is only allowed.
+Usecases of Iptables
+The following are the some of the usecases of Iptables:
+
+Firewall Protection: Iptables can be configured through blocking the unauthorized access and allow legitimate traffic. It facilitates with providing a robust firewall to secure a network or individual system.
+Traffic Shaping and Control: By setting rules, iptables we can manage and prioritize network traffic, ensuring critical services maintain performance and reducing congestion during peak usage times.
+Network Address Translation (NAT): iptables facilitates NAT, allowing multiple devices on a private network to access external networks using a single public IP address, essential for home and business networks.
+Port Forwarding: With iptables, administrators can redirect traffic from one port to another, enabling access to services running on different ports or internal servers from external networks.
+
+
+********************
+How to Configure your Linux Firewall - 3 Methods
+Last Updated : 11 Jul, 2025
+A Linux firewall is essential for protecting your system from unauthorized access and attacks. By configuring firewall rules, you can control the flow of traffic into and out of your system. Linux offers multiple firewall management tools, including iptables and firewalld, both of which can be used to manage and secure your network.
+
+How-to--Configure_
+Setting up a firewall in Linux is an essential step to protect your system from unauthorized access and potential threats. Firewalls act as a barrier between your internal network and external connections, filtering traffic based on predefined rules. These firewalls help your system or server by keeping it safe and secure.
+
+In this guide, we will show you how to set up a firewall in Linux, which will quickly make your system safe and secure.
+
+Table of Content
+
+What is a Firewall?
+Understanding Firewall Tools
+Method 1: Configuring Firewall with iptables
+Method 2: Configuring Firewall with firewalld
+Method 3: Configuring Firewall with UFW (Uncomplicated Firewall)
+Common Mistakes to Avoid
+Tips for Effective Firewall Management
+What is a Firewall?
+A firewall is a security system designed to monitor and control incoming and outgoing network traffic. Acting as a barrier between trusted internal networks and untrusted external connections, firewalls enforce predefined security policies. Firewalls can be implemented in both hardware and software, with the main goal being to:
+
+Restrict unauthorized access.
+Allow legitimate communication.
+Prevent data breaches.
+Types of Linux Firewalls
+iptables
+
+iptables is the most widely used firewall tool in Linux. It works by defining chains of rules that filter network traffic at various points (such as incoming or outgoing traffic). iptables operates at the network layer (Layer 3) and transport layer (Layer 4).
+firewall
+
+firewalld is a more modern firewall management tool for Linux, available on distributions like CentOS, RHEL, and Fedora. It provides a more dynamic and user-friendly approach to managing firewall rules using zones.
+nftables
+
+nftables is the successor to iptables and provides an improved, more efficient way to filter network traffic. It is designed to replace iptables in newer Linux distributions.
+How Does a Linux Firewall Work?
+A Linux firewall filters network traffic based on a series of rules. These rules specify which types of network packets (data sent over the network) are allowed or denied based on factors like:
+
+IP Address: The source or destination address of the packet.
+Port Number: The communication port the packet is trying to reach (e.g., port 80 for HTTP or port 22 for SSH).
+Protocol: The type of network protocol used (TCP, UDP, ICMP, etc.).
+Connection State: Whether the packet is part of an established connection or is a new connection request.
+When a packet enters or exits the system, the firewall checks it against its rules to determine whether it should be allowed to pass or blocked. If a packet matches an "allow" rule, it is allowed to pass. If it matches a "deny" rule, it is blocked.
+
+Note: All the command below need sudo privileges.  
+
+Understanding Firewall Tools
+Before getting into the configuration, let's understand the common firewall tools available on Linux systems:
+
+iptables: A powerful command-line tool that filters network traffic. It works by defining chains of rules for different types of network traffic.
+ufw (Uncomplicated Firewall): A user-friendly frontend for iptables, simplifying configuration.
+firewalld: A dynamic firewall management tool, offering flexible configuration. It uses zones to define trust levels for network connections and interfaces, providing a simpler method to manage firewall settings compared to iptables.
+CSF (ConfigServer Security & Firewall): A complete security solution, including firewall features.
+ClearOS and OPNsense: Firewall-focused operating systems providing web-based interfaces.
+Comparison of Firewall Tools
+Feature	iptables	firewalld	UFW
+Ease of Use	Moderate	Easy	Very Easy
+Best For	Advanced users	Zone-based management	Beginners
+Dynamic Rules	No	Yes	Limited
+GUI Available	No	Yes (GUI plugins)	Yes (Gufw)
+Method 1: Configuring Firewall with iptables
+iptables is a powerful tool for configuring packet filtering and NAT rules. It's ideal for experienced Linux users and system administrators managing complex environments.
+
+iptables operates on a three-tiered system:
+1. Tables: These are categorized groups of rules. Each table handles a specific type of packet:
+
+INPUT: Incoming packets destined for the local machine.
+OUTPUT: Outgoing packets originating from the local machine.
+FORWARD: Packets routed through the machine.
+2. Chains: These are sequences of rules within a table. Packets are processed through a chain until a matching rule is found, determining the packet's fate.
+
+3. Rules: These are the individual instructions within a chain. Each rule has conditions (matching criteria) and targets (actions to take). Common actions include:
+
+ACCEPT: Allow the packet to pass.
+DROP: Discard the packet silently.
+REJECT: Discard the packet and send an error message.
+LOG: Log information about the packet.
+JUMP: Redirect the packet to another chain.
+Note: You need to keep in mind a simple rule here - The Rules you set in the iptables are checked from the topmost rules to the bottom. Whenever a packet passes any of the top rules, it is allowed to pass the firewall. The lower rules are not checked. So be careful while setting up rules.
+
+Step 1: Check Current Rules
+Run sudo iptables -L to list current firewall rules.
+This lists all rules for INPUT (incoming), FORWARD (forwarding), and OUTPUT (outgoing) chains.
+
+sudo iptables -L
+Click to enlarge
+Now the output will show three chains (INPUT, FORWARD, OUTPUT). We can also see column headers, but they are no actual rules. This is because most of the Linux come with no predefined rules.
+
+Let see what each column mean:
+
+Target: This defines what action needs to be done on the packet (ACCEPT,DROP,etc..)  
+prot: This defines the protocol (TCP,IP) of the packet.  
+source: This tells the source address of the packet.  
+destination: This defines the destination address of the packet  
+Step 2: Clear Existing Rules
+If you want to clear/flush out all the existing rules. Run the following command if you want to Reset all current rules to start fresh:
+
+sudo iptables -F
+Step 3: Changing the Default Policy of Chains
+As you can see in the above picture, the default policy of each of the chain is ACCEPT.
+
+sudo iptables -P Chain_name Action_to_be_taken
+Example: If you see the forward chain, you will see "Chain FORWARD (policy ACCEPT)". This means your computer allows any traffic to be forwarded to another computer.
+
+In order to change the policy of forwarding to drop:
+
+sudo iptables -P FORWARD DROP
+The above command will stop any traffic to be forwarded through your system. That means no other system can your system as an intermediary to pass the data.
+
+Step 4: Implementing a DROP Rule
+We'll now start building our firewall policies. We'll first work on the input chain since that is where the incoming traffic will be sent through.
+
+Syntax:
+
+sudo iptables -A/-I chain_name -s source_ip -j action_to_take
+Example
+
+Let's assume we want to block the traffic coming from an IP address 192.168.1.3.
+
+The following command can be used:
+
+sudo iptables -A INPUT -s 192.168.1.3 -j DROP
+This may look complicated, but most of it will make sense when we go over the components:
+
+-A INPUT
+
+The flag -A is used to append a rule to the end of a chain. This part of the command tells the iptable that we want to add a rule to the end of the INPUT chain.
+-I INPUT
+
+In this flag the rules are added to the top of the chain.
+-s 192.168.1.3
+
+The flag -s is used to specify the source of the packet. This tells the iptable to look for the packets coming from the source 192.168.1.3
+-j DROP
+
+This specifies what the iptable should do with the packet. In short, the above command adds a rule to the INPUT chain which says, if any packet arrives whose source address is 192.168.1.3 then drop that packet, that means do not allow the packet reach the computer.
+Once you execute the above command you can see the changes by using the command:-
+
+sudo iptables -L
+The Output would be:
+
+Click to enlarge
+Step 5: Implementing a ACCEPT Rule
+If you want to add rules to specific ports of your network, then the following commands can be used.
+
+Syntax:
+
+sudo iptables -A/-I chain_name -s source_ip -p protocol_name --dport port_number -j Action_to_take
+-p protocol_name:
+
+This option is used to match the packets that follow the protocol protocol_name.
+
+-dport port_number:
+
+This is option is available only if you give the -p protocol_name option. It specifies to look for the packets that are going to the port "port_number".
+
+Example:
+
+Let's say we want to keep our SSH port open (we will assume in this guide that the default SSH port is 22) from the 192.168.1.3 network we blocked in the above case. That is we only want to allow those packets coming from 192.168.1.3 and which wants to go to the port 22.  
+
+Let's try the below command:
+
+sudo iptables -A INPUT -s 192.168.1.3 -p tcp --dport 22 -j ACCEPT
+The above command says looks for the packets originating from the IP address 192.168.1.3, having a TCP protocol and who wants to deliver something at the port 22 of my computer. If you find those packets then Accept them.
+
+Here is the Output:
+
+Click to enlarge
+Troubleshooting the Problem with the Above Command
+It actually does not allow the packets. Can You Guess What it is?
+
+The Rules you set in the iptables are checked from the top to the bottom. Whenever a packet is processed to one of the top rules, it is not checked with the lower rules. Okay! Here's The Answer:- In our case, The packet was checked with the topmost rule, which says that the iptable must drop any packet coming from 192.168.1.3. Hence once the packet got accessed through this rule, it did not go to the next rule which allowed packets to the port 22. Therefore it failed.
+
+How to Fix?
+The easiest answer is, Add the rule to the top of the chain. All you need to do is change the -A option to -I option.
+
+( In our scenario we first delete the rule [refer the next section] added in the above section and then add the below rule again )
+
+The command to do that is
+
+sudo iptables -I INPUT -s 192.168.1.3 -p tcp --dport 22 -j ACCEPT
+Now check the iptable configuration using -L command. The output would be:
+
+Click to enlarge
+Therefore, any packet coming from 192.168.1.3 is first checked if it is going to the port 22 if it isn't then it is run through the next rule in the chain. Else it is allowed to pass the firewall. Now that you have understood how to block and accept the incoming traffic let's see how to delete rules:
+
+Deleting a Rule from the iptable (Optional)
+If you want to delete the rule which accepts the traffic, Please follow the below example to understand it properly:
+
+Syntax:
+
+sudo iptables -D chain_name rule_number
+Example:
+
+Now lets learn it from example of deleting the rule which accepts the traffic to port 22 (Ref: In our Last Example, we added the Port 22)
+
+Run the following command:
+
+sudo iptables -D INPUT 1
+Remember the rule number starts from 1
+
+Output:
+
+Click to enlarge
+Step 6: Saving your Configuration
+This part is unnecessary if you are implementing it on a personal computer which is not a server, but if you are implementing a firewall on a server, then there are high chances that your server might get corrupted and you might lose all your data. So, it's always better to save your configurations. There are a lot of ways to do this, but the easiest way you could find is with iptables-persistent package.
+
+You can download the package from Ubuntu's default repositories:
+
+sudo apt-get update
+sudo apt-get install iptables-persistent
+Once the installation is complete, you can save your configuration using the command:-
+
+sudo invoke-rc.d iptables-persistent save
+Well, this is the end of the tutorial. Let's just brief up all the commands we have learned so far:-
+
+Method 2: Configuring Firewall with firewalld
+firewalld simplifies managing rules by grouping them into zones (e.g., public, work, home).
+
+Step 1: Install firewalld
+Use the following command to Install firewalld
+
+sudo apt-get install firewalld
+
+sudo systemctl start firewalld
+
+sudo systemctl enable firewalld
+
+Step 2: Assign Network Interfaces to Zones
+Lets learn this with an example, Assign eth0 to the "public" zone:
+
+Cop the following command:
+
+sudo firewall-cmd --zone=public --add-interface=eth0 --permanent
+Step 3: Allow Services in Zones
+Example: Permit HTTP traffic in the "public" zone:
+
+sudo firewall-cmd --zone=public --add-service=http --permanent
+
+sudo firewall-cmd --reload
+
+Step 4: View Active Zones and Rules
+sudo firewall-cmd --get-active-zones
+
+sudo firewall-cmd --list-all
+
+Above we have learned how to configure your Linux Firewall using the firewalld method from example where we Created a "home" zone that allows only trusted devices while blocking all external access.
+
+Method 3: Configuring Firewall with UFW (Uncomplicated Firewall)
+UFW is beginner-friendly and ideal for quick firewall setups, lets learn this configuration setup by an example of quickly setting up a secure environment for a personal Linux machine.
+
+Step 1: Enable UFW
+sudo ufw enable
+Step 2: Allow Specific Services
+Permit SSH:
+
+sudo ufw allow ssh
+Step 3: Block Traffic to Specific Ports
+Example: Block traffic to port 8080:
+
+sudo ufw deny 8080
+Step 4: View Status
+sudo ufw status
+Common Mistakes to Avoid
+Not Saving Rules: Forgetting to save changes leads to loss of configurations after a reboot.
+Over-Blocking Traffic: Be cautious when setting DROP rules to avoid locking yourself out.
+Misapplying Zones (firewalld): Ensure interfaces are assigned to the correct zone.
+Tips for Effective Firewall Management
+1. Understand Your Network Needs
+Identify which ports and services are required for your system and block the rest.
+
+2. Use Logging for Monitoring
+Enable logging to track allowed and blocked traffic for better troubleshooting.
+
+For firewalld
+sudo firewall-cmd --set-log-denied=all
+For iptables
+Use the LOG target to record dropped packets.
+
+3. Test Firewall Rules
+Use tools like nmap to scan your system and verify that only intended ports are open.
+
+4. Automate Rule Application
+Write startup scripts or use tools like Ansible to automate firewall configurations.
+
+Conclusion
+By following this guide, you can easily setup a firewall in Linux to protect your system from potential security threats. Whether you're configuring simple or advanced firewall rules, using UFW or other tools, a well-configured firewall can significantly improve your system’s security.
+
+All you need is a regular update on firewall and just by monitoring it will ensure that your Linux system remains safe from unauthorized access and cyber attacks.
+
+
+************************

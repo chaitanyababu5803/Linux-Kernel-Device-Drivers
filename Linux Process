@@ -1,0 +1,410 @@
+Processes in Linux
+Last Updated : 13 Jan, 2026
+A process is simply a program that is currently running on your system. Whenever you execute a command in Linux, the operating system creates a process to run that command.
+
+Whenever a command is issued in Unix/Linux, it creates/starts a new process. For example, pwd when issued which is used to list the current directory location the user is in, a process starts.
+Through a 5 digit ID number Unix/Linux keeps an account of the processes, this number is called process ID or PID. Each process in the system has a unique PID.
+Used up pid’s can be used in again for a newer process since all the possible combinations are used.
+At any point of time, no two processes with the same pid exist in the system because it is the pid that Unix uses to track each process.
+Example:
+
+pwd
+Output:
+
+file
+When you run this command, Linux starts a process to execute pwd, displays the output, and then ends the process.
+
+Process ID (PID)
+Every process in Linux is assigned a unique number called a Process ID (PID).
+
+PID helps the system track and manage processes
+No two running processes can have the same PID at the same time
+Once a process ends, its PID may be reused late
+How a Process Runs
+A process can be run in two ways:  
+
+Method 1: Foreground Process
+Every process when started runs in foreground by default, receives input from the keyboard, and sends output to the screen.
+
+Runs in the terminal by default
+Blocks the terminal until it finishes
+Takes input from the keyboard
+Sends output to the screen
+Example:
+
+sleep 10
+You cannot run another command until this finishes.
+
+Method 2: Background processes
+It run independently of the terminal, allowing you to perform other tasks simultaneously.
+
+They do not require keyboard input while running.
+To start a process in the background, add & at the end of the command.
+Example:
+
+sleep 60 &
+Output:
+
+[1] 2456
+1 -> Job number
+2456 -> Process ID (PID)
+Terminal is immediately free for other commands
+Tracking ongoing processes
+ps (Process status) can be used to see/list all the running processes. 
+
+ps
+file
+For more information -f (full) can be used along with ps  
+$ ps –f
+Output:
+
+file
+For single-process information, ps along with process id is used  
+Command:
+
+$ ps 19
+Output:
+
+PID       TTY      TIME        CMD
+19        pts/1    00:00:00    sh
+For a running program (named process) Pidof finds the process id’s (pids) 
+Fields described by ps are described as: 
+
+UID: User ID that this process belongs to (the person running it)
+PID: Process ID
+PPID: Parent process ID (the ID of the process that started it)
+C: CPU utilization of process
+STIME: Process start time
+TTY: Terminal type associated with the process
+TIME: CPU time is taken by the process
+CMD: The command that started this process
+There are other options which can be used along with ps command : 
+
+-a: Shows information about all users
+-x: Shows information about processes without terminals
+-u: Shows additional information like -f option
+-e: Displays extended information
+Stopping a process:
+When running in foreground, hitting Ctrl + c (interrupt character) will exit the command. For processes running in background kill command can be used if it’s pid is known. 
+
+Command:
+
+$ ps –f
+Output:
+
+UID      PID  PPID C STIME    TTY        TIME CMD
+52471     19     1 0 07:20    pts/1  00:00:00      sh
+52471     25    19 0 08:04    pts/1  00:00:00      ps –f
+Command:
+
+$ kill 19
+Output:
+
+Terminated
+If a process ignores a regular kill command, you can use kill -9 followed by the process ID.
+
+Command: 
+
+$ kill -9 19
+Output:
+
+Terminated
+Job Control Commands
+Job control commands allow you to manage running processes in the shell by starting them in the background, bringing them to the foreground, or suspending and resuming jobs interactively.
+
+1. bg: Resume in Background
+A job control command that resumes suspended jobs while keeping them running in the background
+
+Syntax:
+
+bg [ job ]
+For example: 
+
+bg %19
+2. fg: Bring to Foreground
+It continues a stopped job by running it in the foreground. 
+
+Syntax:
+
+fg [ %job_id ]
+For example:
+
+fg 19
+Monitoring Processes in Real Time
+Monitoring processes in real time allows you to observe CPU, memory, and process activity live, helping you quickly identify resource-heavy or problematic processes.
+
+Using top Command
+
+This command is used to show all the running processes within the working environment of Linux. 
+
+Syntax:  
+
+top
+Output:
+
+file
+It Shows:
+
+CPU usage
+Memory usage
+Running processes (live)
+Press q to exit.
+
+Process Priority
+Process priority determines how much CPU time a process receives, allowing the system to manage and balance resource usage efficiently among running processes.
+
+1. nice
+It starts a new process (job) and assigns it a priority (nice) value at the same time. 
+
+Syntax:  
+
+nice [-nice value]
+Example:
+
+nice -n 10 sleep 60
+nice value ranges from -20 to 19, where -20 is of the highest priority.
+
+-20 -> Highest priority
+19 -> Lowest priority
+2. renice
+To change the priority of an already running process renice is used. 
+
+Syntax:  
+
+renice [-nice value] [process id]
+Example:
+
+renice 5 -p 2456
+Types of Processes
+There are three types of Processes
+
+1. Parent and Child process:
+Every process in Linux is created by another process, known as the parent process.
+The newly created process is called the child process.
+The ps -f command displays the Process ID (PID) and the Parent Process ID (PPID) in its 2nd and 3rd columns.
+Most user processes have the shell as their parent process.
+2. Zombie and Orphan process:
+When a child process completes its execution, it sends a SIGCHLD signal to the parent process, informing it of the termination.
+If the parent process is terminated before the child finishes, the child becomes an orphan process.
+Orphan processes are then adopted by the init (PID 1) process.
+A zombie process is a process that has finished execution but still remains in the process table because its parent has not yet read its exit status.
+Zombie processes are essentially dead processes that occupy minimal system resources.
+3. Daemon process:
+Daemon processes are background system processes that run continuously to provide services. 
+They usually run with root privileges and handle requests from other processes.
+Common examples include the print daemon or web server daemons.
+Daemons do not have an associated terminal (TTY), when you run ps -ef, processes with a ‘?’ in the TTY field are daemon processes.
+Disk and Memory Commands (Related Utilities)
+These commands help monitor system storage usage and memory consumption, which is essential for understanding resource availability and system performance.
+
+1. df
+It shows the amount of available disk space being used by file systems 
+
+Example:
+
+df
+Output:
+
+file
+2. free
+It shows the total amount of free and used physical and swap memory in the system, as well as the buffers used by the kernel. 
+
+Example: 
+
+free
+Output:
+
+
+
+
+*******************************
+How to Manage Process in Linux
+Last Updated : 30 Jul, 2025
+A process means a program in execution. It generally takes an input, processes it, and gives us the appropriate output. Every time you launch an application or execute a command, the system creates a process for it. It involves controlling and monitoring all the running programs on the system. The Linux kernel is in charge of managing these processes, making sure they get the right resources and run smoothly on the CPU.
+
+types_of_processes_in_linux
+Foreground processes: Such kind of processes are also known as interactive processes. These are the processes that are to be executed or initiated by the user or the programmer; they can not be initialized by system services. Such processes take input from the user and return the output. While these processes are running, we can not directly initiate a new process from the same terminal.
+Background processes: Such kind of processes are also known as non-interactive processes. These are the processes that are to be executed or initiated by the system itself or by users, though they can even be managed by users. These processes have a unique PID or process if assigned to them, and we can initiate other processes within the same terminal from which they are initiated.
+Process States in Linux
+A process goes through several states during its lifetime. These states help the system track what each process is doing:
+
+process_state
+Created: The process has been launched, and its data structures are being set up.
+Ready: Waiting for its turn on the CPU.
+Running: Actively executing on the processor.
+Sleeping (waiting): Waiting for something like input or a resource.
+Stopped: The process is paused, usually by a user command.
+Zombie: A Zombie process is one that has finished execution, but its parent has not yet read its exit status. It's "dead" but still occupies an entry in the process table.
+Orphan: An Orphan process is one whose parent has terminated, but it is still running. The orphan process is re-parented to the init process (PID 1).
+Terminated: The process is fully finished, resources are cleaned up.
+Practically Managing the Processes
+These commands help you monitor, control, and manage processes effectively, ensuring your Linux system runs smoothly and stays secure.
+
+1. Example of foreground process.
+
+sleep 5
+Foreground-process-example-sleep
+This command will be executed in the terminal and we would be able to execute another command after the execution of the above command.
+
+Note: In this case, the name of the process is sleep 5 but you may change the same as per your need.  
+
+2. Stopping a process in between of its execution. To stop a foreground process in between of its execution we may press CTRL+Z to force stop it.
+
+sleep 100
+Stopping-a-process-in-between-of-its-execution
+Pressing CTRL+Z in between the execution of the command will stop it.
+
+Note: In this case the name of the process is sleep 100 but you may change the same as per your need.  
+
+3. To get the list of jobs that are either running or stopped.
+
+jobs
+To-get-the-list-of-jobs-which-are-either-running-or-stopped2
+It will display the stopped processes in this terminal and even the pending ones.
+
+4. To run all the pending and force stopped jobs in the background.
+
+bg
+To-execute-pending-and-force-stopped-jobs-in-the-background1
+This will start the stopped and pending processes in the background.
+
+5. To get details of a process running in background.
+
+ps -ef | grep sleep
+To-get-details-of-a-process-running-in-background2
+Note: In this case the name of the process is sleep 100 but you may change the same as per your need.  
+
+6. To run all the pending and force stopped jobs in the foreground.
+
+fg
+To-run-all-the-pending-and-force-stopped-jobs-in-the-foreground
+This will start the stopped and pending processes in the foreground.
+
+7. To run a process in the background without getting impacted by the closing of the terminal.
+
+nohup sleep 100 &
+To-run-a-process-in-background.-without-getting-impacted-by-the-closing-of-terminal
+While executing, it will even store all the output after execution in nohup.out file.
+
+Note: In this case, the process is sleep 100, you may modify it as per your need.  
+
+8. To run some processes in the background directly.
+
+sleep 100&
+To-run-some-processes-in-the-background-directly2
+This will run the process in the background and will display the process id of the process.
+
+Note: In this case, the process is sleep 100, you may modify it as per your need.  
+
+9. To run processes with priority.
+
+nice -n 5 sleep 100 
+To-run-processes-with-priority1
+The top priority is -20 but as it may affect the system processes so we have used the priority 5.
+
+Note: In this case, the process is sleep 100, you may modify it as per your need.  
+
+10. To get the list of all the running processes on your Linux machine.
+
+top
+To-get-the-list-of-all-the-running-processes-on-your-Linux-machine
+
+
+********************
+Getting System and Process Information Using C Programming and Shell in Linux
+Last Updated : 17 May, 2020
+Whenever you start a new process in Linux it creates a file in /proc/ folder with the same name as that of the process id of the process. In that folder, there is a file named "status" which has all the details of the process. We can get those Process Information Through shell as follows:
+cat /proc/1/status
+to-get-process-information-using-shellAs can be seen, it displays most of the information about the process. Note:, In this case, the process id is 1, it may be changed as per need. You can get the System Information through the shell. The basic system information is stored in a file named os-release in /etc/ folder.
+cat /etc/os-release
+System-information-through-shellYou can also get the System Information using C programming. The below code is used to get the details of the system. In this code, utsname maintains a structure that has the details of the system like sysname nodename, release, version, etc.
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<errno.h>
+#include<sys/utsname.h>
+int main()
+{
+   struct utsname buf1;
+   errno =0;
+   if(uname(&buf1)!=0)
+   {
+      perror("uname doesn't return 0, so there is an error");
+      exit(EXIT_FAILURE);
+   }
+   printf("System Name = %s\n", buf1.sysname);
+   printf("Node Name = %s\n", buf1.nodename);
+   printf("Version = %s\n", buf1.version);
+   printf("Release = %s\n", buf1.release);
+   printf("Machine = %s\n", buf1.machine);
+}
+On execution the above code will give the following output:system-information-though-cTo get Process Information using C programming, use the below code. In this code, we execute the Linux command through a c program to get the details of the process.
+
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+   int r=system("cat /proc/1/status");
+}
+On execution the above code will give the following output:to-get-process-information1
+
+
+
+***********************
+Process states and Transitions in a UNIX Process
+Last Updated : 27 Dec, 2024
+Process is an instance of a program in execution. A set of processes combined together make a complete program. There are two categories of processes in Unix, namely
+
+User processes : They are operated in user mode.
+Kernel processes : They are operated in kernel mode.
+Process States
+
+The lifetime of a process can be divided into a set of states, each with certain characteristics that describe the process. It is essential to understand the following states now:
+1. The process is currently executing in user mode.
+2. The process is currently executing in kernel mode.
+3. The process is not executing, but it is ready to run as soon as the scheduler chooses it. Many processes may be in this state, and the scheduling algorithm determines which one will execute next.
+4. The process is sleeping. A process puts itself to sleep when it can no longer
+continue executing, such as when it is waiting for 1/0 to complete.
+
+5.The process is ready to run, but the swapper(process 0) must swap the process into main memory before the kernel can schedule it to execute.
+
+6.The process is sleeping, and the swapper has swapped the process to secondary storage to make room for other processes in main memory.
+
+7. The process is returning from the kernel to user mode, but the kernel preempts it and does a context switch to schedule another process. The distinction between this state and state 3("ready to run") will be brought out shortly.
+
+8. The process is newly created and is in a transition state; the process exists, but it is not ready to run, nor is it sleeping. This state is the start state for all processes except process 0.
+
+9. The process executed the exit system call and is in the zombie state. The process no longer exists, but it leaves a record containing an exit code and some timing statistics for its parent process to collect. The zombie state i. the final state of a process.
+
+Because a processor can execute only one process at a time, at most one process
+may be in states 1 and 2. The two states correspond to the two modes of execution,
+user and kernel.
+
+The states that a Process enters in working from start till end are known as Process states. These are listed below as:
+
+Created -Process is newly created by system call, is not ready to run
+User running -Process is running in user mode which means it is a user process.
+Kernel Running -Indicates process is a kernel process running in kernel mode.
+Zombie- Process does not exist/ is terminated.
+Preempted- When process runs from kernel to user mode, it is said to be preempted.
+Ready to run in memory- It indicated that process has reached a state where it is ready to run in memory and is waiting for kernel to schedule it.
+Ready to run, swapped - Process is ready to run but no empty main memory is present
+Sleep, swapped- Process has been swapped to secondary storage and is at a blocked state.
+Asleep in memory- Process is in memory(not swapped to secondary storage) but is in blocked state.
+Process transitions
+The numbers indicate the steps that are followed.
+Process Transitions
+The working of Process is explained in following steps:
+
+User-running: Process is in user-running.
+Kernel-running: Process is allocated to kernel and hence, is in kernel mode.
+Ready to run in memory: Further, after processing in main memory process is rescheduled to the Kernel.i.e.The process is not executing but is ready to run as soon as the kernel schedules it.
+Asleep in memory: Process is sleeping but resides in main memory. It is waiting for the task to begin.
+Ready to run, swapped: Process is ready to run and be swapped by the processor into main memory, thereby allowing kernel to schedule it for execution.
+Sleep, Swapped: Process is in sleep state in secondary memory, making space for execution of other processes in main memory. It may resume once the task is fulfilled.
+Pre-empted: Kernel preempts an on-going process for allocation of another process, while the first process is moving from kernel to user mode.
+Created: Process is newly created but not running. This is the start state for all processes.
+Zombie: Process has been executed thoroughly and exit call has been enabled. The process, thereby, no longer exists. But, it stores a statistical record for the process. This is the final state of all processes.
+
+
+**************************

@@ -1,0 +1,837 @@
+Linux Tutorial
+Last Updated : 11 Feb, 2026
+Linux is one of the most widely used open-source operating systems. It's fast, secure, stable, and powers everything from smartphones and servers to cloud platforms and IoT devices. Linux is especially popular among developers, system administrators, and DevOps professionals.
+
+A Unix-like OS used in servers, cloud infrastructure, supercomputers, personal computers and embedded systems.
+Reliable and secure, making it ideal for web hosting, networking, and automation.
+Preferred in DevOps, where it's used for scripting, configuration, containerization (Docker), and CI/CD pipelines.
+Open-source and customizable, giving users full control over their systems and workflows.
+
+************************
+Introduction to Linux Operating System
+Last Updated : 29 Jan, 2026
+Linux is based on the UNIX operating system. UNIX is a powerful, multi-user, multitasking operating system originally developed in the 1970s at AT&T Bell Labs. It laid the foundation for many modern operating systems, including Linux.
+
+Linux is free and open-source, accessible to everyone.
+This promotes global collaboration and innovation.
+Linux offers efficient performance and strong security.
+It works well across many devices and industries.
+
+***********************
+Distributions in Linux
+A Linux distribution is a complete operating system built around the Linux kernel, combined with system software, libraries, and applications. It provides users with everything needed to run Linux on different types of devices.
+
+A distribution includes the Linux kernel, system libraries, and essential software tools.
+Different distributions are designed for different purposes such as desktops, servers, and embedded systems.
+Each distro comes with its own package manager, desktop environment, and default applications.
+Users can choose distributions based on performance, stability, ease of use, or customization level.
+Popular Linux Distributions
+Around 600 + Linux Distributions are available and some of the popular Linux distributions are: 
+
+Ubuntu: Ubuntu is a user-friendly Linux distribution mainly used for beginners, desktops, servers, and cloud computing.
+Debian - A stable and reliable Linux distribution, Debian is widely used for servers and serves as the base for many other distributions.
+Kali Linux - A security-focused Linux distribution used for penetration testing, ethical hacking, and digital forensics, Kali Linux.
+MX Linux - MX Linux is a lightweight and fast Linux distribution designed for older hardware with good stability and performance.
+Manjaro - A user-friendly Arch-based Linux distribution used for rolling updates and access to the latest software, Manjaro.
+Linux Mint - A beginner-friendly Linux distribution, Linux Mint, is designed to be simple and familiar for Windows users.
+Solus - Solus is a modern, independent Linux distribution focused on desktop performance and simplicity.
+Fedora - A cutting-edge Linux distribution used by developers to work with the latest technologies, Fedora
+openSUSE - A powerful Linux distribution, openSUSE, is used for system administration, development, and enterprise environments.
+Deepin - Deepin is a visually attractive Linux distribution focused on ease of use and a polished desktop experience.
+Importance of Linux
+Linux is a free, open-source operating system known for its flexibility, stability, and strong security. It is widely used in personal computing, server environments, and enterprise systems because of its performance and customization capabilities.
+
+Offers high security and stability, making it ideal for servers and development work.
+Fully open-source and free to use, modify, and distribute.
+Highly flexible and customizable to suit different user and industry needs.
+Supported by a large global community and a vast software ecosystem.
+Architecture of Linux
+Linux architecture refers to the layered structure of the Linux operating system that defines how its components - such as the kernel, shell, system libraries, and hardware - interact with each other to manage system resources and execute user programs efficiently. It has the following components: 
+
+applications
+1. Kernel
+The kernel is the core of the Linux operating system that manages hardware resources and controls communication between software and hardware.
+
+Handles process management, memory, and device control.
+Prevents conflicts between multiple running programs.
+Types of Kernels: Monolithic, Microkernel, Hybrid, Exokernel
+
+2. System Libraries
+System libraries provide essential functions that allow applications to interact with the kernel without needing to access it directly.
+
+Contain reusable pre-written code for common system operations.
+Act as an interface between applications and the Linux kernel.
+3. Shell
+The shell is the command-line interface that allows users to communicate with the operating system by entering commands.
+
+Interprets and executes user commands.
+Acts as a bridge between user actions and kernel processing.
+4. Hardware Layer
+The hardware layer consists of physical components that execute commands and provide system resources.
+
+Includes CPU, RAM, storage, and input/output devices.
+Communicates with the OS using device drivers and kernel services.
+5. System Utilities
+System utilities are built-in tools that help users manage, configure, and maintain the operating system.
+
+Used for tasks like software installation, user management, and monitoring.
+Simplify system administration processes for both beginners and administrators.
+Applications of Linux Operating System
+The Linux operating system is widely used across multiple domains due to its flexibility, strong security, and open-source nature. It supports a wide range of applications across different industries, as outlined below.
+
+linux_operating_system_uses
+1. Servers and Hosting
+Powers most web servers, cloud platforms, and data centers worldwide.
+Offers high stability, security, and uptime for critical services.
+2. Development
+Provides powerful tools and environments for coding, testing, and debugging.
+Supports multiple programming languages and frameworks.
+3. Desktop and Personal Use
+Offers customizable and secure desktop environments.
+Supports daily computing tasks like browsing, office work, and media usage.
+4. Cybersecurity
+Widely used for ethical hacking and penetration testing (e.g., Kali Linux).
+Provides advanced tools for threat detection and security analysis.
+5. Embedded Systems
+Runs efficiently on low-resource devices like IoT and routers.
+Supports real-time processing and hardware-level control.
+6. Supercomputers
+Used in high-performance computing environments worldwide.
+Handles massive scientific calculations and simulations efficiently.
+7. Education
+Helps students learn programming, networking, and system administration.
+Free and open-source, making it ideal for academic institutions.
+
+
+
+
+
+
+************************
+LINUX Full Form - Lovable Intellect Not Using XP
+Last Updated : 12 Jul, 2025
+LINUX stands for Lovable Intellect Not Using XP. Linux was developed by Linus Torvalds and named after him. Linux is an open-source and community-developed operating system for computers, servers, mainframes, mobile devices, and embedded devices. Linux receives requests from system programs and it relays them into computer hardware. Linux is flexible, reliable, secure and it has large community user's support. Linux is compatible with almost every possible file format and can run on a large number of devices. 
+
+******************
+Windows
+Windows is a proprietary operating system developed by Microsoft, designed for ease of use, software compatibility, and business applications. Unlike Linux, which is an open-source operating system, Windows restricts access to its source code, making it a closed-source OS where modifications are not permitted by users.
+
+Windows is widely used for personal computing, gaming, enterprise solutions, and office environments, primarily due to its intuitive Graphical User Interface (GUI), plug-and-play functionality, and extensive software ecosystem. It is ideal for users with no programming knowledge, offering a simple point-and-click interface for effortless navigation.
+
+One of the major differences between Linux and Windows is that Linux is free and open-source, whereas Windows requires a paid license for installation and use. Different editions, such as Windows 10 Home, Pro, and Enterprise, cater to various user needs, but they all require a product key or subscription model (Windows 365) for activation.
+
+Key Features of Windows
+Graphical User Interface (GUI): A visually appealing and easy-to-use environment with Start Menu, Taskbar, and File Explorer.
+Software Compatibility: Supports Microsoft Office, Adobe Suite, and a vast range of third-party applications that are not available on Linux.
+Gaming Performance: Offers DirectX, high-end GPU driver support (NVIDIA, AMD), and compatibility with AAA games, making it the preferred choice for gamers.
+Hardware Support: Works seamlessly with a wide range of printers, scanners, and USB peripherals without needing additional drivers.
+Regular Updates: Receives security patches and feature updates through Windows Update, but major version upgrades require reinstallation (e.g., Windows 10 to Windows 11).
+
+
+***********************
+Linux Distributions
+Last Updated : 17 Nov, 2025
+A Linux distribution is an operating system built on the Linux kernel, bundled with essential software, tools, and package managers, customized to serve different users like developers, enterprises, cybersecurity professionals, and general users.
+
+Includes the Linux kernel, system tools, package manager, and optional desktop environment.
+Comes with pre-installed tools, reducing manual setup.
+Built for different purposes like hacking, servers, development, or desktop use.
+Offers flexibility and customization based on user needs.
+Top Linux Distributions
+Here are some of the most popular Linux distributions, each with its own unique characteristics:
+
+distributions_of_linux
+Estimated Users of Linux Distributions by 2025
+1. Ubuntu
+Ubuntu is one of the most widely used Linux distributions, especially for beginners. It’s user-friendly and has a large community, which means help is easy to find. It’s also supported by most software vendors.
+Features: Easy installation, long-term support (LTS) versions, and a large software repository.
+Audience: Beginners and general users
+2. Kali Linux
+Kali Linux is specifically designed for cybersecurity tasks such as penetration testing, digital forensics, and ethical hacking. It comes preloaded with more than 600 security tools and is widely used by cybersecurity learners and professionals.
+Features: Pre-installed tools (Nmap, Metasploit, Wireshark, Burp Suite), rolling release updates, customized for security and network testing.
+Audience: Ethical hackers, cybersecurity professionals, penetration testers
+3. Debian
+Debian is known for its stability and is often used as the base for other distros, like Ubuntu. It’s a great choice for those who want a solid, secure system and don’t need the latest bleeding-edge features.
+Features: Reliable, secure, and versatile.
+Audience: Advanced users and developers
+4. Fedora
+Fedora is known for always having the latest software and technologies. It’s backed by Red Hat, a major player in the enterprise Linux world, and is often used by developers who want to work with cutting-edge technologies.
+Features: Newest software, excellent for development, supported by Red Hat.
+Audience: Developers and enthusiasts
+5. Arch Linux
+Arch Linux is for those who want to fully customize their system. It’s a rolling release distro, meaning it’s constantly updated, and it gives users complete control over what gets installed on their system.
+Features: Minimalist, highly customizable, rolling releases.
+Audience: Advanced users and tinkerers
+6. CentOS
+CentOS is based on Red Hat Enterprise Linux (RHEL) and is commonly used for server environments. It’s free and offers long-term stability, which is perfect for businesses and data centers.
+Features: Enterprise-grade stability, long-term support.
+Audience: Servers and enterprises
+7. Mint
+Linux Mint is an easy-to-use distribution that looks and feels similar to Windows. It’s a good choice for users who are new to Linux and want something familiar.
+Features: Simple, user-friendly, and ready-to-use out of the box.
+Audience: Beginners and those transitioning from Windows
+Key Components of a Linux Distribution
+Every Linux distribution is built from essential components that work together to create a fully functional operating system. These components ensure the system can manage hardware, run software, and provide a seamless user experience -
+
+1. Linux Kernel:
+The Linux kernel is the core of the operating system. It manages hardware resources, controls system processes, handles memory management, and provides device drivers. It acts as a bridge between the hardware and user applications, ensuring smooth communication and operation.
+
+2. System Libraries and Utilities:
+System libraries, such as the GNU C Library (glibc), play a crucial role in providing standard functions and APIs that applications use to interact with the kernel. These libraries are essential for running programs and executing system calls effectively.
+
+3. User Interface (UI):
+Linux distributions offer two primary types of user interfaces -
+
+Graphical User Interfaces (GUIs): Popular GUIs like GNOME, KDE, and Xfce provide a user-friendly visual environment for interacting with the system.
+Command-Line Interface (CLI): For more advanced users, the CLI offers direct control of the system through terminal commands.
+4. Software Packages:
+Distributions come preloaded with various software packages tailored for specific use cases. These include -
+
+Productivity tools (e.g., LibreOffice)
+Web browsers (e.g., Firefox, Chromium)
+Media players (e.g., VLC)
+Development tools (e.g., compilers, IDEs)
+5. Package Management System:
+Package managers streamline the installation, update, and removal of software. Each distribution uses its own package manager, such as -
+
+APT for Debian-based distros like Ubuntu.
+YUM/DNF for Red Hat-based distros like Fedora and CentOS.
+Pacman for Arch Linux.
+6. Configuration and Customization:
+Linux distributions provide extensive tools to configure and personalize the system. Users can adjust network settings, user accounts, security policies, and display preferences. This flexibility allows Linux to be tailored for everything from personal use to enterprise-level deployments.
+
+7. Support and Community:
+Most Linux distributions have strong support networks, including documentation, forums, and active communities. These resources allow users to seek help, learn from others, and contribute to the development and improvement of their chosen distribution.
+
+Use Case-Based Classification of Linux Distros
+Different distros are designed for specific purposes such as:
+
+Enterprise and business use (Red Hat, CentOS, Rocky Linux)
+Cybersecurity and penetration testing (Kali Linux, Parrot OS)
+Developers and programmers (Fedora, Arch, Ubuntu)
+Multimedia creation (Ubuntu Studio, AV Linux)
+Lightweight and old hardware use (Lubuntu, Puppy Linux)
+
+******************************
+Difference between Unix and Linux
+Last Updated : 28 Nov, 2025
+Linux and UNIX are powerful multi-user, multitasking operating systems used mainly in server and enterprise environments. UNIX is the original operating system developed in the 1970s, while Linux is its open-source successor inspired by UNIX design principles.
+
+Both support multi-user and multitasking capabilities.
+Commonly used in servers, networking, and enterprise systems.
+UNIX is mostly closed-source, while Linux is fully open-source.
+Linux is more flexible and widely adopted than traditional UNIX systems.
+Both follow similar architecture and command-line structures.
+UNIX Operating System
+UNIX is a multi-user, multitasking operating system developed in the 1970s at AT&T Bell Labs by Ken Thompson and Dennis Ritchie. It is known for its stability, security, and strong performance in enterprise environments.
+
+Originally developed for large systems and servers.
+Mostly closed-source and requires licensed versions.
+Known for its reliability and stability.
+Forms the base for many commercial operating systems.
+Uses a powerful command-line interface for system control.
+Linux Operating System
+Linux is a free and open-source operating system kernel developed by Linus Torvalds in 1991, inspired by UNIX. It is widely used across desktops, servers, mobile devices, and embedded systems.
+
+Completely open-source and free to use.
+Highly customizable and flexible.
+Widely used in servers, security, and cloud computing.
+Supports a wide range of hardware platforms.
+Large global community and strong development support.
+
+
+
+
+
+************************************
+Installation of Arch Linux in VirtualBox
+Last Updated : 21 Nov, 2025
+A Virtual Machine (VM) allows you to run multiple operating systems on a single computer by virtualizing hardware resources. Using VirtualBox, Arch Linux can be installed and tested safely without affecting the primary OS.
+
+Arch Linux runs in a completely isolated virtual environment
+No risk of deleting or corrupting the main operating system
+Ideal for testing, learning, and experimenting before actual installation
+Multiple virtual machines can be created, modified, or deleted easily
+
+
+***************
+Linux Commands
+Last Updated : 12 Jan, 2026
+Linux commands allow users to control and manage the system using the terminal, which works similarly to the Command Prompt in Windows. These commands are case-sensitive and are commonly used for performing system and administrative tasks efficiently.
+
+Used to manage files and directories, such as creating, deleting, copying, and organizing data.
+Helps monitor and control system resources including processes, memory, and CPU usage.
+Allows administrators to manage users, permissions, software packages, and system services.
+Supports networking, automation, and troubleshooting through powerful command-line tools.
+Here’s a list of All commands, covering all operations that can be performed on the Linux terminal, including complete Linux commands for file management, process control, networking, user administration, and system monitoring: all the segregations provide given below:
+
+1. File Operations Commands
+File operations commands are used to manage files within a computer system. They allow users to create, access, modify, organize, and remove files efficiently, ensuring smooth handling of data.
+
+These commands help in generating new files and making changes to the content of existing files.
+Users can display file data in readable, paged, or formatted output without modifying the file.
+Files can be removed from the system, either normally or in a way that prevents recovery.
+
+File Operation Commands in Linux
+Last Updated : 7 Jan, 2026
+File Operation Commands in Linux are used to manage files within the filesystem, including creating, viewing, copying, moving, and deleting files. These commands help users efficiently organize and control file data through the terminal.
+
+Used to create, view, copy, move, rename, and delete files.
+Helps manage file content, size, and structure.
+Supports file searching, comparison, and sorting operations.
+Essential for daily file management and system administration tasks.
+List of File Operation Commands
+file
+1. basename
+
+***************
+2. Directory Operations Commands
+Directory operations commands are used to manage folders within the filesystem. They help users navigate, organize, and maintain the directory structure efficiently.
+
+These commands allow users to move between different directories in the filesystem.
+They display the contents of directories in various formats for better understanding.
+Users can create new directories to organize files logically.
+They help analyze directory size and storage usage.
+
+Linux Commands
+Last Updated : 12 Jan, 2026
+Linux commands allow users to control and manage the system using the terminal, which works similarly to the Command Prompt in Windows. These commands are case-sensitive and are commonly used for performing system and administrative tasks efficiently.
+
+Used to manage files and directories, such as creating, deleting, copying, and organizing data.
+Helps monitor and control system resources including processes, memory, and CPU usage.
+Allows administrators to manage users, permissions, software packages, and system services.
+Supports networking, automation, and troubleshooting through powerful command-line tools.
+Here’s a list of All commands, covering all operations that can be performed on the Linux terminal, including complete Linux commands for file management, process control, networking, user administration, and system monitoring: all the segregations provide given below:
+
+1. File Operations Commands
+File operations commands are used to manage files within a computer system. They allow users to create, access, modify, organize, and remove files efficiently, ensuring smooth handling of data.
+
+These commands help in generating new files and making changes to the content of existing files.
+Users can display file data in readable, paged, or formatted output without modifying the file.
+Files can be removed from the system, either normally or in a way that prevents recovery.
+2. Directory Operations Commands
+Directory operations commands are used to manage folders within the filesystem. They help users navigate, organize, and maintain the directory structure efficiently.
+
+These commands allow users to move between different directories in the filesystem.
+They display the contents of directories in various formats for better understanding.
+Users can create new directories to organize files logically.
+They help analyze directory size and storage usage.
+3. File Permission and Ownership Commands
+File permission and ownership commands control access to files and directories. They ensure that only authorized users can access or modify data.
+
+These commands define read, write, and execute permissions for files.
+Ownership of files can be assigned to specific users.
+Group ownership can be managed for shared access.
+Sensitive files can be protected from unauthorized access.
+4. User Management Commands
+User management commands are used to handle user accounts in a multi-user system. They help administrators manage access and authentication.
+
+New user accounts can be created and removed when required.
+Existing user details and privileges can be modified.
+Password policies and expiration can be controlled.
+User identity and login details can be viewed.
+Active users on the system can be monitored.
+5. Group Management Commands
+Group management commands organize users into groups. They simplify permission handling and improve collaboration.
+
+New groups can be created for users with similar roles.
+Users can be added to or removed from groups.
+Group-level permissions can be managed efficiently.
+Group configuration integrity can be verified.
+Membership details of users can be displayed.
+6. Process Management Commands
+Process management commands monitor and control running programs. They help maintain system performance and stability.
+
+Running processes can be viewed and analyzed.
+Processes can be started, paused, or terminated.
+CPU and memory usage can be monitored.
+System performance issues can be identified.
+Application behavior can be debugged.
+7. Terminal and Session Management Commands
+Terminal and session management commands are used to control and manage terminal sessions and their input/output behavior. They help users handle multiple sessions efficiently and adjust terminal settings for smooth interaction.
+
+These commands allow users to create, switch, and manage multiple terminal sessions.
+Terminal display and input settings can be modified as required.
+User input and output behavior can be controlled for better usability.
+Terminal sessions can be reset or restored when issues occur.
+8. Job Scheduling Commands
+Job scheduling commands automate task execution. They reduce manual effort and improve efficiency.
+
+Tasks can be scheduled to run at a specific time.
+Repetitive jobs can be automated.
+Background job queues can be managed.
+Scheduled tasks can be monitored.
+System maintenance can be automated.
+9. Disk and File System Commands
+Disk and file system commands manage storage devices and data organization. They ensure disk health and reliability.
+
+Disk partitions can be created and modified.
+File systems can be mounted or unmounted.
+Disk space usage can be checked.
+File system errors can be detected and repaired.
+Data can be backed up and restored.
+10. Hardware and System Information Commands
+Hardware and System Information Commands display information about system hardware and resources. They help in monitoring and troubleshooting.
+
+CPU, memory, and storage details can be viewed.
+Connected hardware devices can be identified.
+System performance statistics can be monitored.
+Kernel and boot messages can be examined.
+Hardware health can be analyzed.
+11. Networking Commands
+Networking commands manage network configuration and communication. They help troubleshoot connectivity issues.
+
+Network interface status can be checked.
+Connectivity between systems can be tested.
+Data can be transferred across networks.
+Network traffic can be monitored.
+Routing and firewall rules can be managed.
+12. Package Management Commands
+Package management commands manage software installation and updates. They simplify application handling.
+
+Software packages can be installed or removed.
+System packages can be updated.
+Dependency issues can be resolved.
+Available software can be searched.
+System consistency can be maintained.
+13. Compression and Archiving Commands
+Compression and Archiving Commands reduce file size and bundle multiple files. They improve storage and transfer efficiency.
+
+Files can be compressed to save space.
+Archived files can be created.
+Compressed data can be extracted.
+Archived files can be compared.
+Backup storage can be optimized.
+14. Text Processing and Formatting Commands
+Text processing commands are used to manipulate, filter, and analyze text data in files or command output. They are essential tools in scripting and automation, helping users extract meaningful information and transform data efficiently.
+
+Search, filter, and modify text data
+Process file contents line by line
+Combine with pipes for powerful automation
+Widely used in log analysis and data processing
+15. Checksum and File Integrity Commands
+Checksum and file integrity commands are used to verify the accuracy and consistency of files using hash values. They help detect file corruption, accidental changes, or unauthorized modifications to ensure data security and reliability.
+
+These commands generate unique hash values for files based on their content.
+They help verify whether a file has been altered or damaged during transfer or storage.
+File authenticity can be confirmed by comparing checksum values.
+They assist in detecting unauthorized or malicious changes to files.
+They are widely used to ensure secure file downloads and data integrity.
+16. Shell Built-in and Scripting Commands
+Shell built-in commands are essential components of a shell that control script execution and enable task automation without relying on external programs. They provide the core functionality required for writing efficient, fast, and flexible shell scripts.
+
+Allow definition and management of variables and functions within scripts
+Support conditional statements for decision-making logic
+Enable loops to perform repeated tasks automatically
+Handle user input and automate routine system operations
+17. Development and Build Automation Commands
+Development and build automation commands are used to compile source code, build executables, debug programs, and analyze software behavior. They support efficient software development and automate the build process.
+
+These commands help convert source code into executable programs.
+They allow developers to debug applications and identify errors.
+Build processes can be automated to save time and reduce manual effort.
+Program binaries can be analyzed for performance and correctness.
+They support the use of development tools throughout the software lifecycle.
+18. Kernel and Module Management Commands
+Kernel and Module Management Commands manage kernel modules and services. They control low-level system operations.
+
+Kernel modules can be loaded or removed.
+Module information can be displayed.
+System services can be controlled.
+Kernel behavior can be adjusted.
+Hardware support can be managed.
+19. System Control and Power Commands
+System control commands manage system startup and shutdown. They ensure safe power operations.
+
+Systems can be shut down safely.
+Reboots can be performed when required.
+Power operations can be scheduled.
+Emergency stops can be handled.
+Data loss can be prevented.
+20. Logging and Monitoring Commands
+Logging & Monitoring commands track system activity and events. They help in auditing and troubleshooting.
+
+System logs can be viewed.
+User login history can be tracked.
+Performance data can be monitored.
+Terminal activity can be recorded.
+System behavior can be analyzed.
+21. Mail and user communication commands
+Mail and user communication commands are used for sending messages, notifications, and alerts between users in a multi-user system. They help administrators and users communicate effectively and manage system-related messages.
+
+These commands allow users to send direct messages to other logged-in users.
+System-wide announcements and notifications can be broadcast to all users.
+Mail queues can be monitored and managed efficiently.
+Users can be informed about system events or maintenance activities.
+22. Date and Time Commands
+Date and time commands manage system time settings. They support scheduling and logging.
+
+Current date and time can be displayed.
+Calendar information can be viewed.
+System uptime can be checked.
+Scheduled tasks rely on accurate time.
+Logs maintain correct timestamps.
+22. Printing and media commands
+Printing and media commands are used to manage printing services, audio output, and media-related devices in a computer system. They help users control sound, handle printers, and work with removable media efficiently.
+
+These commands allow users to manage and control printing services and print jobs.
+Audio output and sound settings can be adjusted and tested.
+Media files such as audio can be played through system devices.
+Removable media devices can be mounted, accessed, or ejected safely.
+23. Help and Documentation Commands
+Help & Documentation commands provide information about system usage. They assist users in learning commands.
+
+Manual pages can be accessed.
+Command descriptions can be searched.
+Detailed documentation can be viewed.
+Command locations can be identified.
+Users can understand correct usage.
+
+
+**********************
+Essential Unix Commands
+Last Updated : 3 Feb, 2026
+Unix commands are instructions used to interact with the Unix operating system through a terminal, allowing users to manage files, processes, users, and system resources efficiently. Unix is a powerful, multi-user, and multi-tasking operating system originally developed at Bell Labs and later inspired many modern systems, including Linux.
+
+Unix was developed in the 1970s at AT&T Bell Labs by Dennis M. Ritchie and Ken Thompson.
+The C programming language was created specifically to build the Unix operating system.
+Linux is a Unix-like operating system that follows the same design philosophy and command structure.
+The core of Linux is the Linux Kernel, first released in the early 1990s by Linus Torvalds.
+All Unix/Linux commands are case-sensitive, meaning Hello and hello are treated differently.
+Below are several sections that explain the most essential Linux commands:
+
+1. File System Navigation Unix Commands
+Command
+
+Description
+
+Example
+
+cd
+
+Changes the current working directory.
+
+cd Documents
+
+ls
+
+Lists files and directories in the current directory.
+
+ls
+
+pwd
+
+Prints the current working directory.
+
+pwd
+
+mkdir
+
+Creates a new directory.
+
+mkdir new_folder
+
+rmdir
+
+Removes an empty directory.
+
+rmdir empty_folder
+
+mv
+
+Moves files or directories.
+
+mv file1.txt Documents/
+
+2. File Manipulation Unix Commands
+Command
+
+Description
+
+Example
+
+touch
+
+Creates an empty file or updates the access and modification times.
+
+touch new_file.txt
+
+cp
+
+Copies files or directories.
+
+cp file1.txt file2.txt
+
+mv
+
+Moves files or directories.
+
+mv file1.txt Documents
+
+rm
+
+Remove files or directories.
+
+rm old_file.txt
+
+chmod
+
+Changes the permissions of a file or directory.
+
+chmod 644 file.txt
+
+chown
+
+Changes the owner and group of a file or directory.
+
+chown user:group file.txt
+
+ln
+
+Creates links between files.
+
+ln -s target_file symlink
+
+cat	Concatenates files and displays their contents.	cat file1.txt file2.txt
+head	Displays the first few lines of a file.	head file.txt
+tail	Displays the last few lines of a file.	tail file.txt
+more	Displays the contents of a file page by page.	more file.txt
+less	Displays the contents of a file with advanced navigation features.	less file.txt
+diff	Compares files line by line.	diff file1.txt file2.txt
+patch	Applies a diff file to update a target file.	patch file.txt < changes.diff
+3. Process Management Unix Commands
+Command
+
+Description
+
+Example
+
+ps	Displays information about active processes, including their status and IDs.	ps aux
+top	Displays a dynamic real-time view of system processes and their resource usage.	top
+kill	Terminates processes using their process IDs (PIDs).	kill <pid>
+pkill	Sends signals to processes based on name or other attributes.	pkill -9 firefox
+killall	Terminates processes by name.	killall -9 firefox
+renice	Changes the priority of running processes.	renice -n 10 <pid>
+nice	Runs a command with modified scheduling priority.	nice -n 10 command
+pstree	Displays running processes as a tree.	pstree
+pgrep	Searches for processes by name or other attributes.	pgrep firefox
+jobs	Lists active jobs and their status in the current shell session.	jobs
+bg	Puts a job in the background.	bg <job_id>
+fg	Brings a background job to the foreground.	fg <job_id>
+nohup	Runs a command immune to hangups, with output to a specified file.	nohup command &
+disown	Removes jobs from the shell's job table, allowing them to run independently.	disown <job_id>
+4. Text Processing Unix Commands
+Command
+
+Description
+
+Example
+
+grep	Searches for patterns in text files.	grep "error" logfile.txt
+sed	Processes and transforms text streams.	sed 's/old_string/new_string/g' file.txt
+awk	Processes and analyzes text files using a pattern scanning and processing language.	awk '{print $1, $3}' data.csv
+5. Network Communication Unix Commands
+Command	Description	Example
+ping	Tests connectivity with another host using ICMP echo requests.	ping google.com
+traceroute	Traces the route that packets take to reach a destination.	traceroute google.com
+nslookup	Queries DNS servers for domain name resolution and IP address information.	nslookup google.com
+dig	Performs DNS queries, providing detailed information about DNS records.	dig google.com
+host	Performs DNS lookups, displaying domain name to IP address resolution.	host google.com
+whois	Retrieves information about domain registration and ownership.	whois google.com
+ssh	Provides secure remote access to a system.	ssh username@hostname
+scp	Securely copies files between hosts over a network.	scp file.txt username@hostname:/path/
+ftp	Transfers files between hosts using the File Transfer Protocol (FTP).	ftp hostname
+telnet	Establishes interactive text-based communication with a remote host.	telnet hostname
+netstat	Displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.	netstat -tuln
+ifconfig	Displays or configures network interfaces and their settings.	ifconfig
+iwconfig	Configures wireless network interfaces.	iwconfig wlan0
+route	Displays or modifies the IP routing table.	route -n
+arp	Displays or modifies the Address Resolution Protocol (ARP) cache.	arp -a
+ss	Displays socket statistics.	ss -tuln
+hostname	Displays or sets the system's hostname.	hostname
+mtr	Combines the functionality of ping and traceroute, providing detailed network diagnostic information.	mtr google.com
+6. Coding and Development Unix Commands
+Command	Description	Example
+vim / nano	Used to write and edit source code files from the terminal.	vim main.c
+gcc	Compiles C programs into executable files.	gcc program.c -o program
+make	Automates compilation using a Makefile.	make
+./program	Runs a compiled executable file.	./program
+python3	Executes Python scripts.	python3 script.py
+git	Manages source code version control.	git status
+grep	Searches code files for specific patterns or keywords.	grep "main" *.c
+7. System Administration Unix Commands
+Command
+
+Description
+
+Example
+
+df
+
+Displays disk space usage.
+
+df -h
+
+du
+
+Displays disk usage of files and directories.
+
+du -sh /path/to/directory
+
+crontab -e
+
+Manages cron jobs, which are scheduled tasks that run at predefined times or intervals.
+
+crontab -e
+
+
+
+*****************
+Find Command in Linux
+Last Updated : 27 Dec, 2025
+The find command in Linux is used to search for files and directories based on name, type, size, date, or other conditions. It scans the specified directory and its sub directories to locate files matching the given criteria.
+
+Search based on modification time (e.g., files edited last week).
+Locate files with specific permissions or content.
+Automate tasks like deleting or executing commands on found files.
+Example : To find a file named "example.txt" in the home directory, you would use:
+
+find ./gfg -name "sample.txt"
+file
+This command will locate and display the path to the file if it exists in the specified directory or its subdirectories.
+
+Syntax:
+
+find [path] [options] [expression]
+Path: Where to start searching (e.g., ~/Documents).
+Options: Refine your search (e.g., -type for files/directories).
+Expression: Criteria like filenames or sizes.
+Examples of find Command in Linux
+1. How to find a Specific File Using `find` Command in Linux
+This query is designed to identify a file within a designated directory. In the provided example, it seeks a file named "sample.txt" within the "GFG" directory.
+
+find ./GFG -name sample.txt 
+The find command traverses the specified directory (./GFG) and looks for a file named "sample.txt." If found, it displays the path to the file.
+
+Output:
+
+Search a file with specific name
+Search a file with specific name
+2. How to Search Files with a Pattern Using `find` Command in Linux
+This command is use for discovering files within a directory that attach to a specific naming pattern. In this case, it identifies files ending with '.txt' within the "GFG" directory.
+
+find ./GFG -name *.txt 
+The command looks for files with names ending in '.txt' within the "GFG" directory, presenting a list of matching files.
+
+Output:
+
+Search a file with pattern
+Search a file with pattern
+3. How to find and Confirm File Deletion Using `find` Command in Linux
+This command not only locates a specified file but also prompts the user for confirmation before initiating its removal. The example seeks to delete a file named "sample.txt" within the "GFG" directory.
+
+find ./GFG -name sample.txt -exec rm -i {} \; 
+The -exec option executes the rm command on the located file, and the -i flag prompts the user for confirmation before deletion. When this command is entered, a prompt will come for confirmation, if you want to delete sample.txt or not. if you enter 'Y/y' it will delete the file. 
+
+Output :
+
+ find and delete a file with confirmation
+find and delete a file with confirmation
+4. Search for Empty Files and Directories Using `find` Command in Linux
+This query is tailored for discovering and listing empty files and directories within a specified directory.
+
+find ./GFG -empty
+The `find` command identifies and lists all empty folders and files within the "GFG" directory or its subdirectories.
+
+Output:
+
+Search for empty files and directories
+Search for empty files and directories
+5. Search Files with Specific Permissions Using `find` Command in Linux
+This command is used to locate files within a directory that have specific permissions. In the provided example, it identifies files with permissions set to 664 within the "GFG" directory.
+
+find ./GFG -perm 664
+The command searches for files within the "GFG" directory with the specified permissions (664) and displays the results.
+
+Output:
+
+Search for file with entered permissions
+Search for file with entered permissions
+6. Display Repository Hierarchy Using `find` Command in Linux
+This command is utilized to display the hierarchical structure of repositories and sub-repositories within a given directory.
+
+find . -type d
+This command displays all the repositories and sub-repositories present in the current repository. In the below example, we are currently in a repository namely "GeeksforGeeks" which contains a repo "Linux", which contains sub-repo "LinuxCmds" which further contains a repo "FindCmd". The ouput of below cmd is simply displaying this info. Please note that in this case if you will use "ls" cmd then it will only show "/Linux".
+
+Output:
+
+Screenshot-(548)
+
+7. Search Text Within Multiple Files Using `find` Command in Linux
+This command is tailored for finding lines containing specific text within multiple files. The example looks for lines containing the word 'Geek' within all '.txt' files in the current directory and its subdirectories.
+
+find ./ -type f -name "*.txt" -exec grep 'Geek'  {} \;
+The command searches for '.txt' files (-type f and -name "*.txt") and uses grep to print lines containing the specified text ('Geek').
+
+Output:
+
+Search text within multiple files
+Search text within multiple files
+8. Find Files by When They Were Modified Using `find` Command in Linux
+The -mtime option is handy for finding files based on their modification time. To find files modified within the last 7 days, you can use:
+
+find /path/to/search -mtime -7
+This command will list files modified in the last week.
+
+Finding Last modifications 
+Finding Last modifications
+In this example we are searching changes in directory "/home/administrator/Downloads" which are done is past 7 days.
+
+9.  Find Large Files (Over 100MB)
+Find the files which is >100MB across the entire system. You can also change the file like 200M, 400M etc
+
+find / -type f -size +100M  
+1
+Find large files
+10. Find Files Modified in the Last 24 Hours
+In this it shows the files edited in the last day. You can also change 2 days (-2).
+
+find ~ -type f -mtime -1  
+1
+Find Files Modified files
+~: This represents your home directory.
+-type f: This option tells find to only look for files
+-mtime refers to the modification time of a file.
+-1 means "less than 1 day ago."
+11. Find and Delete Temporary Files
+This command is used to find and delete temporary files in the /tmp directory.
+
+sudo find /tmp -type f -name "*.tmp" -exec rm {} \;  
+1
+Find and Delete Temporary Files from your syste,
+12. Limit Search Depth
+In this we looks for config.yml only in the current directory and one subfolder deep or we can search any file with search depth.
+
+find . -maxdepth 2 -name "*.txt" 
+1
+Limit Search Depth
+13. Use Grep to find Files Based on Content Using `find` Command in Linux
+Combining the find command in linux with grep allows you to search for files based on their content. For example, to find files containing the word "pattern" in the current directory and its subdirectories, you can use:
+
+find . -type f -exec grep -l "pattern" {} \;
+This command will display the names of files containing the specified content.
+
+Breakdown of the Command:
+find .: Initiates the search from the current directory (.).
+-type f: Specifies that the search is for files only, excluding directories.
+-exec grep -l "pattern" {} \;: Executes the grep command on each found file ({}) to search for the specified content ("pattern"). The -l option in grep ensures that only the names of files containing the pattern are displayed.
+Command Execution:
+The find linux command starts the search from the current directory, including all its subdirectories.
+For each file (-type f) found in the search, the -exec option executes the grep command.
+The grep command searches for the specified content ("pattern") in each file.
+If a file contains the specified content, its name is displayed due to the -l option in grep.
+
+
+
+**************************
+

@@ -1,0 +1,858 @@
+Linux System Administration
+*******************************3
+Introduction to Linux System Administration
+Last Updated : 20 Jan, 2026
+Linux system administration involves managing, configuring, and maintaining Linux-based systems to ensure their smooth and secure operation. It includes handling users, software, hardware resources, and system performance.
+
+Involves installing, configuring, and updating Linux operating systems.
+Manages users, groups, and file permissions.
+Monitors system performance and ensures security.
+Handles backups, troubleshooting, and system maintenance tasks.
+Key Responsibilities of a Linux System Administrator
+These are some of the primary things that a Linux system administrator should know and understand:
+
+1. Linux File Systems
+A Linux system administrator should have a solid knowledge and understanding of the various Linux file systems used by Linux like Ext2, Ext3, and Ext4. Understanding the difference between these file systems is important so that one can easily perform tasks and partition disks or configure Linux file system permissions.
+
+2. File System Hierarchy
+The Linux File System Hierarchy (FHS) tells us about the location and structure of directories and files on a Linux system. It is important for managing system files effectively.
+
+3. Managing Root/Super User
+The root user is the most powerful user on a Linux System because it has access to all the system files and directories. So, it is important for maintaining system security.
+
+4. Basic Bash Command
+The default shell of Linux is Bash, and it is used for executing commands on the command-line interface. A Linux system administrator should have a basic understanding of the command of bash to perform tasks.
+
+5. Handling File, Directories, and Users
+Managing files, directories and users is a critical part of Linux system administration. A system administrator should be able to perform the basic file and directory management tasks.
+
+Also check: Beginner’s Guide to Linux System Administration
+
+Steps to Start the Career as Linux System Administrator
+Becoming a Linux System Administrator requires a combination of technical skills, hands-on experience, and a clear learning path, here is how you can start -
+
+Install and learn to use Linux environment.
+Get Certified in Linux administration.
+Learn to do Documentation.
+Joining up with a local Linux Users Group or Community for Support and Help
+The main role of the Linux Systems Administrator is to manage the operations like installing, observing the software and hardware systems and taking backup. And also have a good ability to describe an In-depth understanding of technical knowledge.
+
+Even freshman-level Professionals have great possibilities for the position of System Administrator with the yearly median salary of around INR 4-6 Lacs.
+
+Essential Tools for Linux System Administration
+Linux system administrators use a range of tools designed to streamline critical tasks such as monitoring, configuration, security, and troubleshooting:
+
+1. Monitoring and Performance Tools
+These tools help administrators track system performance and resource usage, ensuring systems run smoothly.
+
+top/htop: Displays real-time CPU, memory, and process usage.
+iotop: Monitors disk I/O operations.
+vmstat: Provides information about system processes, memory, and disk performance.
+nmon: A performance monitoring tool for detailed system stats.
+2. User and Permission Management Tools
+Managing users, groups, and permissions is vital for system security.
+
+adduser/useradd: Adds new users to the system.
+usermod: Modifies existing user accounts.
+passwd: Updates passwords for users.
+chmod/chown: Adjusts file permissions and ownership.
+3. Package Management Tools
+These tools are used to install, update, and remove software packages.
+
+apt: For Debian-based systems (like Ubuntu).
+yum/dnf: For Red Hat-based systems (like CentOS or Fedora).
+zypper: For SUSE Linux.
+snap: Manages universal Linux packages.
+4. Networking Tools
+Administrators use these tools to manage and troubleshoot network configurations.
+
+ping: Checks network connectivity to a server.
+netstat/ss: Displays network connections and listening ports.
+ip: Manages IP addresses and network interfaces.
+nmap: Scans networks and identifies open ports.
+5. Security and Firewall Tools
+Securing a Linux system is critical, and these tools assist in maintaining strong defenses.
+
+iptables/ufw: Configures firewalls to control incoming and outgoing traffic.
+fail2ban: Protects systems from brute-force attacks by banning IPs.
+SELinux/AppArmor: Provides mandatory access control for enhanced security.
+6. File and Storage Management Tools
+Admins manage filesystems and storage devices using these tools.
+
+lsblk: Lists information about storage devices and partitions.
+df/du: Monitors disk space usage.
+mount/umount: Mounts and unmounts filesystems.
+rsync: Synchronizes files and directories across systems.
+7. Service and Process Management Tools
+Controlling system services and processes is essential for stability.
+
+systemctl: Manages system services (start, stop, restart).
+ps: Lists running processes.
+kill: Terminates specific processes.
+cron: Automates scheduled tasks.
+8. Backup and Recovery Tools
+To prevent data loss, administrators rely on these tools for backups.
+
+tar: Archives files into a single compressed file.
+rsync: Synchronizes data between systems or directories.
+dd: Creates exact copies of drives or partitions.
+9. Automation and Scripting Tools
+Automation saves time by reducing manual work.
+
+Bash: The most commonly used Linux shell for scripting.
+Ansible: Automates server configurations and deployments.
+cron: Schedules scripts or commands to run automatically.
+
+
+
+******************************
+Beginner's Guide to Linux System Administration
+Last Updated : 15 Jul, 2025
+A Linux System Administrator manages the operations such as maintaining proper software, observing them, and even taking care of backup and hardware systems. It is recommended that before reading this article please go through the article What is Linux System Administration. Here we have some basics of Linux System Administration. 
+
+Some Basic Configurations
+Set the Hostname: Open terminal and enter the following command in order to change the hostname.  
+
+sudo hostname your_hostname
+Replace "your_hostname" with the hostname that you want to keep. 
+
+Setting up the time zone: Move to /usr/share/zoneinfo/your_zone and then link the zone file with /etc/localtime to set the time zone.  
+
+sudo ln -sf Kolkata /etc/localtime
+File System and Management
+Managing files is the most important task in Linux as all devices, directories, and packages are just a type of file in Linux. 
+
+1. To know about File system read the article File System in Linux. 
+2. To learn more about Linux file hierarchy structure you can read the article Linux File System Hierarchy 
+3. To get the difference between Linux and Windows File System read the article Windows vs Linux 
+
+Below is the list of some file management commands in Linux:  
+
+Command	Description
+cd	Used to change the current directory
+ls	Used to list the directories and files in a directory
+vi	A good text editor to edit files
+touch	Used to create new files
+nano	A good text editor to edit files
+cp	Used to copy files and directories.
+mv	Used to move files and directories.
+rm	Used to remove files and directories.
+fdisk	Used to partition disks and to work with file systems
+mount	Used to mount a file system or a device
+You can also read the file management in Linux from the article https://www.geeksforgeeks.org/linux-unix/file-management-in-linux/  
+
+Networking Commands
+Networking commands play an important role in system Administration and a good system Administrator must have good hands-on networking commands. Here is a list of such commands that are mostly used for networking in Linux. 
+
+Command	Description
+route	used to view and manipulate ip routing tables.
+ping	Used to send some packets to a server and receive them back in case of a good network connection.
+traceroute	Used to trace the path taken by the traffic.
+nslookup	Used for querying the Domain Name System to obtain domain name or IP address mapping, or other DNS records.
+ifconfig	Used to view and change the configuration of the network interfaces on your system
+tracepath	Used to traces path to destination discovering MTU along this path
+ssh	Provides a secure encrypted connection between two hosts over an insecure network
+telnet	Used to test if a port is open and even to work with telnet protocol.
+curl	Used to transfer data to or from a server, using any of the supported protocols.
+scp	Used to securely copy files and directories between two locations over a network.
+w	Provides a quick summary of every user logged into a computer
+netcat	used for performing any operation in Linux related to TCP, UDP, or UNIX-domain sockets
+nmap	Used for network exploration and security auditing
+netstat	Used for monitoring network connections both incoming and outgoing as well as viewing routing tables, interface statistics, etc
+ip	Used to assign an address to a network interface and/or configure network interface parameters on Linux operating systems
+
+
+Managing Users and Group in Linux
+A system administrator has to manage the users working on the system. Users are the accounts which are logged in to your system or may log in to the system. Each user in Linux has a unique UID to identify the user. All information of the users is stored in /etc/passwd file and all hashed passwords are stored in /etc/shadow file. There are basically 2 types of user in Linux on the basis of their rights to access.  
+
+Superuser or Administrator
+General users
+Each user may or may not be a part of a group which is a collection of users. To learn more about users in Linux go through the article Users in Linux System Administration. Here is a list of commands that are used to manage users. 
+
+Command	Description
+usermod	Used to modify users and their respective settings
+useradd	Used to add a new user
+su and sudo	Used to change the user and work with root
+change	Used to change the user's aging/expiry information
+groupdel	Used to delete a group
+gpasswd	Used to change password of group
+groupmod	Used to modify group and its settings
+groupadd	Used to add a new group
+To learn more about how to manage users read the article User Management in Linux 
+
+To learn more about how to manage groups read the article Group Management in Linux 
+
+System Diagnostics/Monitor Performance
+A System Administrator should be able to diagnose problems in a system and even to monitor the performance of the system so that it may be improved. Here is the list of some useful commands for the same. 
+
+Command	Description
+top	Used to display the running processes.
+vmstat	Used to get information about processes, memory, paging, block IO, disk, and CPU scheduling
+lsof	Used to check list of open files.
+htop	Used to determine the cause of load of each process
+iostat	Used to monitor IO devices loading
+nmon	It displays performance about the CPU, MEMORY, NETWORK, DISKS, FILE SYSTEM, NFS, TOP PROCESSES, RESOURCES, AND POWER MICRO-PARTITION
+Reading and Analysing Logs
+A good system Administrator must have an idea of how to read and manage logs as they give a lot of crucial and required information. 
+
+Command	Description
+dmesg	Used to print the message buffer of the kernel
+tail	Used to print details from the log files located in the folder /var/log
+journalctl	Used to read systemd logs
+
+
+
+****************************
+Monitoring System Usage, Outages and Troubleshooting Linux Servers
+Last Updated : 6 Feb, 2026
+Monitoring system usage and performance is an essential task for Linux administrators. It helps identify resource bottlenecks, detect failures, and resolve issues before they affect users. By using built-in Linux monitoring and logging tools, administrators can maintain system stability and reliability.
+
+Track CPU, memory, disk, and network usage
+Detect system outages and failures early
+Identify performance bottlenecks
+Analyze system logs for error diagnosis
+Improve server reliability and uptime
+Monitoring Storage Space Utilization
+Storage space monitoring helps administrators prevent disk overflow and system failures. Linux provides built-in commands to check disk usage and identify large files and directories. Proper storage monitoring ensures smooth system performance.
+
+Check available and used disk space
+Monitor filesystem usage
+Identify storage bottlenecks
+Locate large files and directories
+Prevent system crashes due to full disks
+1. df Command (Disk Free)
+The df command displays information about disk space usage for mounted filesystems. It shows total size, used space, available space, and mount points.
+
+Display filesystem usage
+Show available disk space
+Monitor inode usage
+Identify mounted partitions
+Example: Display Filesystem Type and Inode Usage
+
+To inspect filesystem type and inode consumption.
+
+Command:
+
+df -hTi
+-h: Enables human-readable format
+-T: Shows filesystem type
+-i: Displays inode usage
+Output:
+
+Click to enlarge
+df  -hTi command
+2. du Command (Disk Usage)
+The du command calculates and summarizes the disk space used by files and directories. It helps identify which directories or files are consuming the most storage. This makes it easier to monitor disk utilization, detect unusually large files, and optimize storage management.
+
+Summarize space used by files or directories
+Identify large directories
+Display human-readable sizes
+Calculate overall disk usage
+Example: Total disk usage of a directory
+
+Check total space consumed by all items in a directory.
+
+Command:
+
+du -sch /home/arpit/*
+-s: Show total size of each argument
+-c: Display grand total
+-h: Human-readable sizes
+Output:
+
+Click to enlarge
+Du command
+Memory and CPU Utilization
+Monitoring CPU and memory usage helps administrators understand system performance and detect resource overload. Linux provides several built-in tools to track running processes, memory usage, and system activity. These tools help in identifying performance bottlenecks.
+
+Monitor CPU usage
+Track memory consumption
+Analyze running processes
+Detect system overload
+Improve performance management
+1. top Command (Process Monitoring)
+The top command displays real-time information about running processes, CPU usage, memory consumption, swap usage, and system load. It provides a dynamic view of active processes, helping administrators identify processes consuming excessive resources and take corrective action.
+
+Display all running processes
+Monitor CPU, memory, and swap usage
+Track process IDs (PID) and associated users
+Identify resource-heavy applications
+Support real-time system performance monitoring
+Command:
+
+top
+Output:
+
+Click to enlarge
+Top Command 
+2. vmstat Command (Virtual Memory Statistics)
+The vmstat command provides detailed information about virtual memory, system processes, paging, interrupts, disk I/O, and CPU scheduling. It helps monitor overall system health and detect performance issues, especially memory shortages and high swap activity. which is a built-in utility used for monitoring in Linux this command is used to get the information of following 
+
+Display memory statistics (free, buffer, cache)
+Monitor system processes and queue lengths
+Track paging, disk I/O, and interrupts
+Evaluate CPU utilization and scheduling
+Sample system performance over time
+Command:
+
+vmstat
+Output:
+
+Click to enlarge
+VMStat command 
+3. lsof Command (List Open Files)
+The lsof command lists all open files and the processes associated with them. Open files include regular files, network sockets, pipes, and devices. This command is particularly useful when unmounting disks or diagnosing errors caused by files in use.
+
+List all open files and associated processes
+Monitor network sockets, pipes, and device files
+Identify processes preventing disk unmounting
+Detect files causing system errors
+Command:
+
+lsof
+Output:
+
+Click to enlarge
+LSof command
+Network Monitoring
+Monitoring network activity is essential for identifying connectivity issues, tracking data flow, and troubleshooting network-related problems. Linux provides commands to observe incoming and outgoing packets, open connections, and network interfaces in real time. These tools help administrators maintain network performance and quickly resolve connectivity issues.
+
+1. tcpdump Command (Packet Analyzer)
+The tcpdump command captures and analyzes network packets transmitted through network interfaces. It supports filtering traffic by protocol, IP address, or port, and can save captured packets to a file for further analysis.
+
+Capture TCP/IP packets in real time
+Filter traffic by protocol, IP, or port
+Save captured packets for later analysis
+Diagnose network connectivity issues
+Analyze network traffic patterns
+Command:
+
+tcpdump
+Output:
+
+Click to enlarge
+Tcpdump command
+2. netstat Command (Network Statistics)
+The netstat command displays information about active network connections, routing tables, and interface statistics. It helps monitor incoming and outgoing traffic, detect open ports, and troubleshoot network performance issues.
+
+Display active network connections (TCP/UDP)
+Monitor incoming and outgoing traffic
+Identify open ports and listening services
+Assist in network troubleshooting
+Command:
+
+netstat
+Output:
+
+Click to enlarge
+nettat command
+System Logs and Troubleshooting
+System logs provide detailed records of events, errors, and hardware or software activity. Examining logs helps identify unplanned failures, network issues, or hardware problems, enabling administrators to troubleshoot effectively. Linux stores logs primarily in the /var/log directory, including plain text and compressed files.
+
+Inspecting Log Files
+The /var/log directory contains logs for system events, services, and hardware activity. Common log files include syslog, dmesg, messages, and service-specific directories like cups for printers.
+
+Central location for system and service logs
+Contains both plain text and compressed files
+Helps identify failures or unusual events
+Useful for troubleshooting hardware and software issue
+Command:
+
+cd /var/log
+ls
+Output:
+
+Click to enlarge
+ 
+Examining Service Logs (Printer Example) 
+Printer connectivity issues can be diagnosed by inspecting CUPS logs. Viewing recent entries helps identify errors or failed print jobs.
+
+Example: Display Last 10 Lines of Access Log
+
+cd /var/log/cups
+tail access_log
+Output:
+
+Click to enlarge
+Log files Monitoring
+Examining the logs for hardware failures
+Hardware related issues are often difficult to troubleshoot because they occur at a low system level. To diagnose such problems, Linux provides several log files that record kernel, system, and hardware events. Most of these logs are stored in the /var/log directory.
+
+Step 1: Accessing the Log Directory
+
+First, navigate to the system log directory and list its contents.
+
+Command:
+
+cd /var/log
+ls
+Output:
+
+Click to enlarge
+ 
+Step 2: Viewing System Logs (syslog)
+
+The syslog file stores general system messages, including hardware events, service activity, and system errors. Since this file requires administrative privileges, we use the sudo command.
+
+Command:
+
+sudo cat syslog
+Output:
+
+Click to enlarge
+ 
+Step 3: Checking Kernel Messages Using dmesg
+
+Kernel messages are especially useful for identifying hardware issues such as CPU, memory, disk, or driver problems. The dmesg command displays messages directly from the kernel ring buffer.
+
+Command:
+
+sudo dmesg
+Output:
+
+Click to enlarge
+ 
+Step 4: Filtering Hardware Errors
+
+To quickly identify critical hardware-related problems, kernel logs can be filtered to display only error messages.
+
+Command:
+
+sudo dmesg | grep "error"
+Output:
+
+
+
+
+***********************
+Systemd and its Components in Linux
+Last Updated : 6 Feb, 2026
+Systemd is a system and service manager for modern Linux operating systems. It initializes the system, manages services, and controls system resources during startup and runtime. Systemd replaces the traditional SysV init system and runs as the first process with Process ID (PID) 1.
+
+Initialize the system during boot
+Manage and control system services
+Replace the traditional SysV init system
+Improve boot speed and performance
+Provide centralized system management tools
+Installation of systemd
+Systemd is pre-installed on most modern Linux distributions, including Arch, Debian, Fedora, and Ubuntu. Manual installation is possible on systems without it.
+
+Steps for Manual Installation:
+Step 1. Check systemd version:
+
+systemctl --version
+What is Linux Systemd and Its Components
+Step 2. Download the package:
+
+https://www.freedesktop.org/software/systemd/systemd-216.tar.xz
+What is Linux Systemd and Its Components
+Step 3. Extract the package:
+
+tar -xJf systemd-216.tar.xz
+-xJf extracts .tar.xz files using xz compression.
+What is Linux Systemd and Its Components
+Step 4. Install required dependencies:
+
+apt-get install gcc intltool gperf glib2-devel
+Dependencies like gcc and glib2-devel are needed to compile the source package.
+Step 5. Navigate to the source directory and prepare installation:
+
+cd systemd-216
+pwd
+What is Linux Systemd and Its Components
+Step 6: Configure the package
+
+./configure
+Prepares the build environment, detecting system paths and dependencies.
+What is Linux Systemd and Its Components
+Step 7. Compile and install:
+
+make install
+What is Linux Systemd and Its Components
+Managing Services with systemd
+Systemd provides a unified framework to manage services, system resources, and configurations efficiently. Services are organized into units, and systemctl is the main utility to control them.
+
+Primary Utilities:
+systemctl: Controls services and units (start, stop, enable, disable, status). Central for service management.
+journalctl: Accesses system logs maintained by systemd. Supports filtering by service, time, or priority.
+hostnamectl: Configures system hostname dynamically.
+localectl: Sets system locale and keyboard layout.
+timedatectl: Manages system time, date, and timezone settings.
+systemd-cgls: Displays the hierarchy of cgroups for running processes.
+systemadm: Provides a graphical or simplified interface to manage services using systemctl commands.
+Service Management Commands:
+1. List all services (active and inactive):
+
+Displays all services, including their current state, description, and whether they are loaded.
+
+Command:
+
+systemctl list-units --type service --all
+What is Linux Systemd and Its Components
+2. Start a service:
+
+Launches the service immediately but does not enable it on boot.
+
+Command:
+
+systemctl start [service-name]
+Linux Systemd and Its Components
+3. Stop a service:
+
+Stops the service immediately.
+
+Command:
+
+systemctl stop [service-name]
+Linux Systemd and Its Components
+4. Restart a service:
+
+Stops and starts the service in one step. Useful after configuration changes.
+
+Command:
+
+systemctl restart [service-name]
+Linux Systemd and Its Components
+Service status codes: 0 indicates running, 1 indicates inactive.
+System Power Management Commands:
+systemd also provides commands for managing system power operations.
+
+Halt the system:
+
+systemctl halt
+Power off the system:
+
+systemctl poweroff
+Reboot the system:
+
+systemctl reboot
+
+
+
+********************************
+Boot Process with Systemd in Linux
+Last Updated : 6 Feb, 2026
+systemd is the first user-space process started by the Linux kernel and runs with PID 1. It handles system initialization, service management, and controls the entire boot process in modern Linux systems.
+
+Starts after the kernel and becomes the parent of all user-space processes
+Manages system services using parallel startup and dependency resolution
+Replaces traditional SysVinit-based boot mechanisms
+Uses targets instead of runlevels to define system states
+Linux Boot Process
+The Linux boot process is a sequence of stages that prepare the system from power-on to a usable state. Each stage performs a specific task, and control is gradually handed over from firmware to the operating system and finally to systemd.
+
+Boot Process Stages
+BIOS/UEFI: Performs Power-On Self Test (POST) and initializes hardware components
+Boot Loader: Loads the Linux kernel and allows OS or kernel selection
+Kernel: Initializes hardware, mounts the root filesystem, and starts the first user-space process
+systemd: Started by the kernel as PID 1; initializes services and reaches the target system state
+Role of systemd in the Boot Process
+After the kernel finishes hardware and memory initialization, systemd is launched as the first user-space process with PID 1. It takes full control of system startup, orchestrating the initialization of all services, devices, and resources to bring the system into a usable state efficiently.
+
+systemd Responsibilities During Boot
+Reads unit files that define services, mounts, sockets, timers, and device configurations
+Resolves dependencies between units to ensure correct startup order and avoid conflicts
+Starts independent services in parallel, minimizing overall boot time
+Activates services on demand, conserving CPU and memory resources
+Transitions the system to the configured target, such as multi-user, graphical, or rescue mode
+Monitors service status and can automatically restart failed units to maintain system stability
+systemd Targets
+Systemd uses targets to define system states, replacing traditional runlevels. Targets group services, sockets, and other units required to reach a specific operating mode.
+
+Common systemd Targets
+multi-user.target: Non-graphical system with networking and standard services
+graphical.target: Full graphical environment with display manager
+rescue.target: Single-user mode for system recovery or maintenance
+emergency.target: Minimal environment for critical fixes, with only essential services
+Boot Performance Analysis with systemd-analyze
+systemd-analyze measures and examines system boot performance, helping identify services or processes that delay startup. It provides detailed insights into the time taken by the kernel, user-space, and individual units, allowing optimization of boot speed.
+
+Identifies slow-starting services or units
+Measures total boot time for comparison and monitoring
+Helps optimize system startup for performance and efficiency
+Supports troubleshooting of boot delays and dependency issues
+Example 1: Check Total Boot Time
+Determining total boot time helps monitor system performance and identify unusually slow startups.
+
+Command:
+
+systemd-analyze time
+Measures the time spent in firmware, bootloader, kernel, and user-space
+Useful for detecting delays in overall system initialization
+Output:
+
+Click to enlarge
+Example 2: View Service Dependency Chain
+Analyzing the service dependency chain shows the order in which critical services start and how they depend on each other.
+
+Command:
+
+systemd-analyze critical-chain
+Displays the boot sequence timeline with service dependencies
+The value after @ indicates when a service started (time since boot began)
+The value after + shows how long the service took to start
+Helps pinpoint services that delay reaching the target system state
+Output:
+
+Click to enlarge
+processes chain summary
+Note: This output visualizes which services are critical in the boot process and highlights any potential bottlenecks.
+
+Example 3: Identify Slow Services
+Listing slow-starting services helps pinpoint units that delay the boot process, allowing administrators to optimize or disable them.
+
+Command:
+
+systemd-analyze blame
+Lists all system services in descending order of startup time
+Shows the duration each service took to start, making it easy to identify performance bottlenecks
+Useful for optimizing boot by targeting unnecessary or slow services
+Output:
+
+list of services
+list of services
+Note: The output highlights which services consumed the most time during startup, providing actionable insights for system optimization.
+
+Example 4: Generate a Graphical Boot Chart
+A graphical boot chart provides a visual timeline of the boot process, showing how long each service or device took to start.
+
+Command:
+
+systemd-analyze plot > boot.svg
+Creates a graphical representation of the boot sequence in an SVG file
+Each horizontal bar represents a service, mount, or device unit
+Longer bars indicate units that delayed the boot process
+Helps quickly identify performance bottlenecks and resource-intensive services
+Output:
+
+plot > boot.svg
+plot > boot.svg
+A file named boot.svg is created in the current working directory where the command is run
+Visualization shows startup duration of services like systemd-journald.service and disk devices
+boot.svg image , plotted with time vs process
+boot.svg image, plotted with time vs process
+Note: Open boot.svg in a browser or image viewer to see the graphical boot timeline.
+
+
+**********************
+Controling systemd Services on Remote Linux Server
+Last Updated : 6 Feb, 2026
+systemd is a modern system and service manager for Linux that handles service startup, process tracking, and resource management. It replaces traditional SysVinit scripts with a unified, dependency-based approach to controlling system services and resources.
+
+Provides parallelized system startup for faster boot times.
+Supports on-demand activation of daemons and background services.
+Tracks and manages processes using Linux control groups (cgroups).
+Maintains mount and automount points and handles system snapshots/restores.
+Uses unit files to define and control services, sockets, mounts, and other system resources.
+Controlling systemd Services on a Remote Linux Server
+systemd allows administrators to manage services on a remote Linux server using SSH-based connections. Follow the steps below to configure and control systemd services remotely.
+
+Step 1: Create a dedicated systemd management user on the remote server
+Log in to the remote server and create a user that will be used to manage systemd services:
+
+Command:
+
+sudo useradd --create-home systemd-manager
+(Optional but recommended) Set a password or configure SSH key-based authentication for this user.
+Creating User
+ 
+Step 2: Prepare SSH key-based authentication
+Create the .ssh directory for the new user and set proper permissions:
+
+sudo mkdir /home/systemd-manager/.ssh
+sudo chmod 700 /home/systemd-manager/.ssh
+sudo chown systemd-manager:systemd-manager /home/systemd-manager/.ssh
+Copy your public SSH key into the following file on the remote server:
+
+/home/systemd-manager/.ssh/authorized_keys
+Set correct permissions:
+
+sudo chmod 600 /home/systemd-manager/.ssh/authorized_keys
+sudo chown systemd-manager:systemd-manager /home/systemd-manager/.ssh/authorized_keys
+Click to enlarge
+Step 3: Configure authorization using PolicyKit (polkit)
+systemd relies on PolicyKit (polkit) to authorize privileged operations. Ensure polkit is installed on the remote server:
+
+Command:
+
+sudo apt install policykit-1
+To allow the systemd-manager user to manage systemd services, appropriate polkit rules must be configured. This step is required for starting, stopping, or reloading services remotely.
+Installaing policykit-1
+Step 4: Remotely manage systemd services
+Once SSH access and authorization are configured, use the systemctl command with the --host (or -H) option to manage services on the remote server.
+
+For example, to check the status of the nginx service:
+
+systemctl --host systemd-manager@server.example.org status nginx
+Remotely managing systemd services
+Step 5: Perform additional systemd operations
+You can perform other systemd actions remotely in the same way. For example, to reload systemd configuration files on the remote host:
+
+Command:
+
+systemctl --host systemd-manager@server.example.org daemon-reload
+More operations
+Step 6: End the Remote Session
+Each systemctl --host command uses a separate SSH connection. Once your commands are complete, simply exit the terminal or press Ctrl+C if a command is running interactively.
+
+For more information, consult the manual page:
+
+man systemctl
+
+
+
+***********************
+How to Start, Stop and Restart Services in Linux Using systemctl Command
+Last Updated : 23 Jul, 2025
+System services play a crucial role in the functioning of a Linux system, handling various tasks and processes in the background. systemctl is a powerful command-line tool that allows users to manage these services effectively. In this article, we will explore the basics of using systemctl to start, stop, restart, enable, disable and display status of services in a Linux environment.
+
+What is systemctl?
+Before diving into service management, it's essential to understand the basics systemctl. This command is used to control the systemd system and service manager, which is a central component in modern Linux distributions.
+
+systemctl [command] [unit]
+Here,
+
+command: Action to be performed (e.g., start, stop, restart, enable, disable).
+unit: The service or unit to be affected.
+Systemctl is a controller or utility of Systemd (an init system with a set of programs executed in the background), with auxiliary in manage services, These commands are executed in mode root if you aren't mode rooting the system, requesting the password of root.
+
+What is a service?
+A service in computing is a background process that performs specific tasks and functions without user intervention. Services often start automatically during system boot and run continuously to provide functionalities such as web serving, file sharing, or system monitoring. They are managed by the operating system and can be started, stopped, or restarted as needed. Services help ensure essential operations are consistently available. Examples include web servers like Apache, database servers like MySQL, and system logging services.
+
+What is a daemon?
+A daemon is a background process that runs continuously on a Linux or Unix system. It performs tasks without direct user interaction, often starting automatically at boot. Common examples include web servers, database servers, and system monitoring tools. Daemons usually have names ending with "d", like httpd or sshd. They help manage system functions and services efficiently.
+
+What is the init system?
+The init system is the first process that runs when a Linux system boots up and is responsible for initializing the system. It manages system services and processes, handling their start, stop, and restart. Common init systems include SysVinit, Upstart, and systemd. The init system ensures that all necessary services are running correctly and manages dependencies between them. It continues to run in the background to monitor and manage system processes throughout the system's operation.
+
+Units in systemd
+In systemd, units are the basic objects that systemd manages and controls. They represent system resources such as services, timers, devices, and mount points. Each unit is defined by a configuration file with a specific suffix, like .service for services or .timer for timers. Units can be started, stopped, enabled, or disabled using systemctl commands. They are essential for defining how the system boots and manages various processes and resources.
+
+.service units in systemd
+Systemd .service units are configuration files used to manage services on Linux systems. They define how and when services should be started, stopped, and restarted. Each .service file contains details like the service's name, description, and the command to run. These files are typically located in /etc/systemd/system or /lib/systemd/system. Managing them involves commands like systemctl start, systemctl stop, and systemctl enable.
+
+How to find all the systemd units in the system?
+To list available systems units or to List all Services in Linux we use the following command:
+
+systemctl list-unit-files --type service -all
+all the systemd
+How to Start a System Service in Linux
+Syntax:
+
+sudo systemctl start service.service
+The command start serves for starting (activate) one or more units specified on the command line.
+
+Example:
+
+sudo systemctl start mariadb
+systemctl start
+Command Start
+How to Stop a System Service in Linux
+Syntax:
+
+sudo systemctl stop service.service
+The command stop serves for stopping the service or (deactivate) one or more units specified on the command line.
+
+Example:
+
+sudo systemctl stop mariadb
+systemctl stop
+Command Stop and Status
+How to Display Status of a System Service in linux
+Syntax:
+
+sudo systemctl status service.service
+The command status serves to check the status of the service. Show terse runtime status information about one or more units, followed by the most recent log data from the journal. If no units are specified, show system status.
+
+Example:
+
+sudo systemctl status mariadb
+systemctl status
+Command Status
+How to restart a System Service in Linux
+Syntax:
+
+sudo systemctl restart service.service
+The command restart serves for restarting the service in execution. Stop and then start one or more units specified on the command line. If the units are not running yet, they will be started.
+
+Example:
+
+sudo systemctl restart mariadb
+systemctl restart
+Command Restart
+How to Enable a System Service in Linux
+Syntax:
+
+sudo systemctl enable name_service.service
+The enable command serves for executing the service since the initialization if consists of one or more units or unit instances. This will create a set of symlinks, as encoded in the [Install] sections of the indicated unit files. the system manager configuration is reloaded (in a way equivalent to daemon-reload), in order to ensure the changes are taken into account immediately. 
+
+Example
+
+sudo systemctl enable mariadb
+systemctl enable
+Command Enable
+Click to enlarge
+Command Status
+How to Disable a System Service in Linux
+Syntax:
+
+sudo systemctl disable name_service.service
+The disable command serves for withdrawing the service since the initialization of one or more units. This removes all symlinks to the unit files backing the specified units from the unit configuration directory and hence undoes any changes made by enabling or link.
+
+Example:
+
+sudo systemctl disable mariadb
+systemctl disable
+Command Disable
+Click to enlarge
+Command Status
+Shutdown or reboot the system using systemctl
+Reboot the System: It instructs systemd to restart the entire system. All services are stopped, and the system goes through a complete shutdown process before restarting.
+
+sudo systemctl reboot
+Shut Down the System: It tells systemd to power off the machine. All services and processes are stopped, and the system is safely powered down.
+
+sudo systemctl shutdown
+journalctl
+journalctl is a command used in Linux systems to query and display logs from the systemd journal, which is a system service that collects and stores logging data. Here’s a simple guide on how to use journalctl:
+
+journalctl
+journalctl -n 10 is used to display the last 10 entries (lines) from the systemd journal. Here's a breakdown of what each part of the command does:
+
+journalctl: Invokes the journalctl command, which is used to query and display logs from the systemd journal.
+-n 10: Specifies the number of lines to display. In this case, -n 10 instructs journalctl to show the last 10 entries from the journal.
+journalctl -n 10
+journalctl -n 10
+Securing a service using systemd
+Securing a service using systemd is an essential practice to safeguard your system against potential vulnerabilities and unauthorized access. Here's a simplified guide on how to accomplish this:
+
+1. Understand Service Unit Files
+
+Service Configuration: Each service in systemd is managed by a unit file, typically located in /etc/systemd/system/. These files define how the service operates, including its start-up behavior, resource limits, and security settings.
+2. Restrict Service Permissions
+
+User and Group Permissions: Specify the user and group under which the service runs. Avoid using the root user whenever possible to minimize the impact of security breaches.
+3. Utilize systemd Security Features
+
+PrivateTmp: Enable private /tmp and /var/tmp directories for the service to prevent information leakage between different services.
+ProtectSystem and ProtectHome: Set these options to restrict access to system directories and user home directories, respectively, to enhance system security.
+ReadOnlyPaths and ReadWritePaths: Specify which directories the service can read from or write to. Limiting write access can prevent unintended modifications to critical files.
+4. Limit Resource Usage
+
+Limit CPU and Memory: Use CPUQuota and MemoryLimit options to restrict the service's CPU and memory usage, preventing resource exhaustion attacks.
+5. Enable Network Controls
+
+Restrict Network Access: Utilize RestrictAddressFamilies, IPAddressAllow, and IPAddressDeny options to control network access for the service, limiting its exposure to potential threats.
+6. Set File System Permissions
+
+File System Permissions: Ensure that the service's files and directories have appropriate permissions (chmod) and ownership (chown) to prevent unauthorized access.
+7. Regularly Update and Monitor
+
+Keep System Updated: Regularly update your system and service software to patch security vulnerabilities and ensure that your security measures remain effective.
+Monitor Logs: Monitor systemd journal logs (journalctl) for any suspicious activities or security-related events, and take appropriate action if necessary.
+Conclusion
+We discussed systemctl which is a vital command-line tool for managing system services in Linux, playing a crucial role in tasks such as starting, stopping, restarting, enabling, and disabling services. This article provided a comprehensive guide to systemctl, covering its syntax and key commands. From listing available systemd units to enabling or disabling automatic startup, each command contributes to effective service management. The article also addressed common questions, offering practical solutions for tasks such as checking service status, starting, stopping, and restarting services, and enabling or disabling automatic startup. Overall, understanding and mastering systemctl commands are essential for Linux administrators to ensure the stability and optimal performance of their systems.
+
+
+
+*******************************

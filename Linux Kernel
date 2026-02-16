@@ -1,0 +1,450 @@
+Linux Kernel
+Linux Kernel
+Last Updated : 11 Jul, 2025
+Linux Kernel is the heart of Linux operating systems. It is an open-source (source code that can be used by anyone freely) software that is most popular and widely used in the industry as well as on a personal use basis. Who created Linux and why? Linux was created by Linus Torvalds in 1991 as a hobby project. Since then, many of the users have contributed to its growth and development of it. Before Jumping directly to the main topic "Linux Kernel" one must know a few concepts (prerequisites) to better understand the Linux Kernel.
+
+What is Linux Operating System and Kernel?
+An operating system (OS) is a software system that manages the computer that provides some services for computer programs and manages computer hardware and software. Basically, it is a communication or resource allocation between computer hardware and applications. It provides some services like managing input and output devices, managing file systems, providing UI (User Interface) and also managing computer memory. It also governs and executes all the programs. 
+
+Linux operating System also consists of various components for example system libraries, user-space utilities, Linux kernel, and applications. The kernel is the core component of an operating system. This provides a platform for programs and various services to run on top of it. The Linux kernel is modifiable according to the user's needs. Overall, the Linux Operating System and Linux kernel together provide a strong and user-friendly platform.  
+
+In a General-Purpose Computer running many processes simultaneously, we need a middle layer to manage the distribution of the computer's hardware resources efficiently and fairly among all the various processes running on the computer. This middle layer is referred to as the kernel. The kernel virtualizes the computer's common hardware resources to provide each process with its own virtual resources. This makes the process seem as if it is the sole process running on the machine. The kernel is also responsible for preventing and mitigating conflicts between different processes. This is schematically represented below: 
+
+Schematical representation of Kernel working
+Schematical representation of Kernel working
+Figure: Virtual Resources for each Process
+
+The Core Subsystems of the Linux Kernel are as follows:
+
+The Process Scheduler
+The Memory Management Unit (MMU)
+The Virtual File System (VFS)
+The Networking Unit
+Inter-Process Communication Unit
+ Core Subsystems of the Linux Kernel 
+ Core Subsystems of the Linux Kernel 
+Figure: The Linux Kernel for the purpose of this article we will only be focusing on the 1st three important subsystems of the Linux Kernel. The basic functioning of each of the 1st three subsystems is elaborated below:
+
+The Process Scheduler: This kernel subsystem is responsible for fairly distributing the CPU time among all the processes running on the system simultaneously.
+The Memory Management Unit: This kernel sub-unit is responsible for proper distribution of the memory resources among the various processes running on the system. The MMU does more than just simply provide separate virtual address spaces for each of the processes.
+The Virtual File System: This subsystem is responsible for providing a unified interface to access stored data across different filesystems and physical storage media.
+Some Basic Commands:
+Some Basic Commands we need to know while working on Linux Kernel. 
+
+`ls` : Use to list all the files and directories in a particular location specified by us.
+Syntax: 
+
+ls [OPTION] [FILE]
+Example:
+
+In this example we are going to list all the file and directories in our current location , we have one directory name `snap`.
+
+ Here in second time we use `a` option (to see all the hidden files).
+
+ In third time we specified a `snap` directory.
+
+`ls` command
+ls command
+`mkdir` : In this we will create a new directory.
+Syntax:  
+
+mkdir [OPTION] DIRECTORY
+Example:
+
+In this we will make a directory name `test` and to check it we can use command `ls`.
+
+`mkdir` command
+mkdir command
+`cat` : In this we will print the context inside a text file on terminal.
+Syntax: 
+
+cat [OPTION] [FILE]
+Example: 
+
+Printing a content inside a text file name `example`.
+
+`cat` command
+cat command
+`pwd` : In this we will get to know the name and path of the current working directory.
+Syntax: 
+
+pwd
+Example:
+
+`pwd` command
+pwd command
+Conclusion:
+
+
+*****************
+Kernel in Operating System
+Last Updated : 22 Sep, 2025
+A kernel is the core part of an operating system. It acts as a bridge between software applications and the hardware of a computer.
+
+The kernel manages system resources, such as the CPU, memory and devices, ensuring everything works together smoothly and efficiently.
+It handles tasks like running programs, accessing files and connecting to devices like printers and keyboards.
+An Operating System includes the kernel as its core, but also provides a user interface, file system management, network services and various utility applications that allow users to interact with the system
+kernel
+Kernel (Operating System)
+Facilitates communication between hardware and user applications.
+Ensures efficient and secure multitasking.
+Manages system stability and prevents unauthorized resource access.
+Types of Kernel
+The following are different types of kernels.
+
+Monolithic kernel: all OS services run in kernel space → fast, but less fault-isolation. Examples are Unix, Linux, Open VMS, XTS-400 etc.
+Microkernel: minimal kernel functionality; most services moved to user space → better reliability, but more overhead. Examples are Minix 3 and Mach (true microkernel versions like Mach 3.0),
+Hybrid kernel: mixes monolithic + microkernel ideas; some services in kernel for speed, others isolated for safety. Examples are Windows NT family (Windows 2000, XP, Vista, 7, 8, 10 etc.), macOS / XNU, ReactOS and Haiku OS
+Nanokernel: extremely minimal kernel, providing only basic hardware abstraction; everything else outside. Examples are Nemesis and MIT Exokernel projects like XOK, Aegis
+Exokernel: separates protection vs. management; gives apps direct control over hardware abstractions so apps decide what abstractions to build.
+Functions of Kernel
+
+
+****************
+Difference between Operating System and Kernel
+Last Updated : 12 Jul, 2025
+In the world of computing, two terms that are frequently mentioned are Operating System (OS) and Kernel. In this article, we will explore the key differences between the OS and the Kernel, their functions, and how they work together to manage hardware and software.
+
+What is an Operating System?
+An Operating System (OS) is the software that manages computer hardware, and software, and provides services for computer programs. It acts as an intermediary between the user and the hardware, making it easier for users to interact with the system without needing to understand the complex details of the hardware.
+
+What is a Kernel?
+The Kernel is the core part of the operating system. It manages communication between the hardware and the software. It provides a user interface, file system management, network services, and various utility applications that allow users to interact with the system.
+
+
+
+
+******************
+Linux Kernel Module Programming: Hello World Program
+Last Updated : 30 Jan, 2019
+Kernel modules are pieces of code that can be loaded and unloaded into the kernel upon demand. They extend the functionality of the kernel without the need to reboot the system. Custom codes can be added to Linux kernels via two methods.
+The basic way is to add the code to the kernel source tree and recompile the kernel.
+A more efficient way is to do this is by adding code to the kernel while it is running. This process is called loading the module, where module refers to the code that we want to add to the kernel.
+Since we are loading these codes at runtime and they are not part of the official Linux kernel, these are called loadable kernel module(LKM), which is different from the “base kernel”. Base kernel is located in /boot directory and is always loaded when we boot our machine whereas LKMs are loaded after the base kernel is already loaded. Nonetheless, these LKM are very much part of our kernel and they communicate with base kernel to complete their functions. LKMs can perform a variety of task, but basically they come under three main categories,
+device driver,
+filesystem driver and
+System calls.
+So what advantage do LKMs offer? One major advantage they have is that we don’t need to keep rebuilding the kernel every time we add a new device or if we upgrade an old device. This saves time and also helps in keeping our base kernel error free. A useful rule of thumb is that we should not change our base kernel once we have a working base kernel. Also, it helps in diagnosing system problems. For example, assume we have added a module to the base kernel(i.e., we have modified our base kernel by recompiling it) and the module has a bug in it. This will cause error in system boot and we will never know which part of the kernel is causing problems. Whereas if we load the module at runtime and it causes problems, we will immediately know the issue and we can unload the module until we fix it. LKMs are very flexible, in the sense that they can be loaded and unloaded with a single line of command. This helps in saving memory as we load the LKM only when we need them. Moreover, they are not slower than base kernel because calling either one of them is simply loading code from a different part of memory. **Warning: LKMs are not user space programs. They are part of the kernel. They have free run of the system and can easily crash it. So now that we have established the use loadable kernel modules, we are going to write a hello world kernel module. That will print a message when we load the module and an exit message when we unload the module. Code:
+
+
+
+/**
+ * @file    hello.c
+ * @author  Akshat Sinha
+ * @date    10 Sept 2016
+ * @version 0.1
+ * @brief  An introductory "Hello World!" loadable kernel
+ *  module (LKM) that can display a message in the /var/log/kern.log
+ *  file when the module is loaded and removed. The module can accept
+ *  an argument when it is loaded -- the name, which appears in the
+ *  kernel log files.
+*/
+#include <linux/module.h>     /* Needed by all modules */
+#include <linux/kernel.h>     /* Needed for KERN_INFO */
+#include <linux/init.h>       /* Needed for the macros */
+​
+///< The license type -- this affects runtime behavior
+MODULE_LICENSE("GPL");
+​
+///< The author -- visible when you use modinfo
+MODULE_AUTHOR("Akshat Sinha");
+​
+///< The description -- see modinfo
+MODULE_DESCRIPTION("A simple Hello world LKM!");
+​
+///< The version of the module
+MODULE_VERSION("0.1");
+​
+static int __init hello_start(void)
+{
+    printk(KERN_INFO "Loading hello module...\n");
+    printk(KERN_INFO "Hello world\n");
+    return 0;
+}
+​
+static void __exit hello_end(void)
+{
+    printk(KERN_INFO "Goodbye Mr.\n");
+}
+​
+module_init(hello_start);
+module_exit(hello_end);
+Explanation for the above code: Kernel modules must have at least two functions: a "start" (initialization) function called init_module() which is called when the module is insmoded into the kernel, and an "end" (cleanup) function called cleanup_module() which is called just before it is rmmoded. Actually, things have changed starting with kernel 2.3.13. You can now use whatever name you like for the start and end functions of a module. In fact, the new method is the preferred method. However, many people still use init_module() and cleanup_module() for their start and end functions. In this code we have used hello_start() as init function and hello_end() as cleanup function. Another thing that you might have noticed is that instead of printf() function we have used printk(). This is because module will not print anything on the console but it will log the message in /var/log/kern.log. Hence it is used to debug kernel modules. Moreover, there are eight possible loglevel strings, defined in the header , that are required while using printk(). We have list them in order of decreasing severity:
+KERN_EMERG: Used for emergency messages, usually those that precede a crash.
+KERN_ALERT: A situation requiring immediate action.
+KERN_CRIT: Critical conditions, often related to serious hardware or software failures.
+KERN_ERR: Used to report error conditions; device drivers often use KERN_ERR to report hardware difficulties.
+KERN_WARNING: Warnings about problematic situations that do not, in themselves, create serious problems with the system.
+KERN_NOTICE: Situations that are normal, but still worthy of note. A number of security-related conditions are reported at this level.
+KERN_INFO: Informational messages. Many drivers print information about the hardware they find at startup time at this level.
+KERN_DEBUG: Used for debugging messages.
+We have used KERN_INFO to print the message.
+Preparing the system to run the code:
+The system must be prepared to build kernel code, and to do this you must have the Linux headers installed on your device. On a typical Linux desktop machine you can use your package manager to locate the correct package to install. For example, under 64-bit Debian you can use:
+akshat@gfg:~$ sudo apt-get install build-essential linux-headers-$(uname -r)
+Makefile to compile the source code:
+obj-m = hello.o
+all:
+        make -C /lib/modules/$(shell uname -r)/build/ M=$(PWD) modules
+clean:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+**Note: Don’t forget the tab spaces in Makefile
+Compiling and loading the module:
+Run the make command to compile the source code. Then use insmod to load the module.
+akshat@gfg:~$ make
+make -C /lib/modules/4.2.0-42-generic/build/ M=/home/akshat/Documents/hello-module modules
+make[1]: Entering directory `/usr/src/linux-headers-4.2.0-42-generic'
+  CC [M]  /home/akshat/Documents/hello-module/hello.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/akshat/Documents/hello-module/hello.mod.o
+  LD [M]  /home/akshat/Documents/hello-module/hello.ko
+make[1]: Leaving directory `/usr/src/linux-headers-4.2.0-42-generic'
+Now we will use insmod to load the hello.ko object.
+akshat@gfg:~$ sudo insmod hello.ko
+Testing the module:
+You can get information about the module using the modinfo command, which will identify the description, author and any module parameters that are defined:
+akshat@gfg:~$ modinfo hello.ko
+filename:       /home/akshat/Documents/hello-module/hello.ko
+version:        0.1
+description:    A simple Hello world LKM
+author:         Akshat Sinha
+license:        GPL
+srcversion:     2F2B1B95DA1F08AC18B09BC
+depends:        
+vermagic:       4.2.0-42-generic SMP mod_unload modversions
+To see the message, we need to read the kern.log in /var/log directory.
+akshat@gfg:~$ tail /var/log/kern.log
+...
+...
+Sep 10 17:43:39 akshat-gfg kernel: [26380.327886] Hello world
+To unload the module, we run rmmod:
+akshat@gfg:~$ sudo rmmod hello
+Now run the tail command to get the exit message.
+akshat@gfg:~$ tail /var/log/kern.log
+...
+Sep 10 17:43:39 akshat-gfg kernel: [26380.327886] Hello world
+Sep 10 17:45:42 akshat-gfg kernel: [26503.773982] Goodbye Mr.
+
+
+*******************
+Linux Loadable Kernel Module
+Last Updated : 31 Jul, 2023
+If you want to add code to a Linux kit, the basic way to do that is to add source files to the kernel source tree and assemble the kernel. In fact, the process of setting up the kernel consists mainly of selecting which files to upload to the kernel will be merged. But you can also add code to the Linux kit while it is running. A piece of code you add this way is called a loadable kernel module (LKM). These modules can do many things, but they are usually one of three items: 
+
+device drivers
+file system drivers
+system calls. 
+The kernel separates certain functions, including these, especially well so it does not need to be encrypted across the kernel. Several parameters that a driver must know can change from system to system. These can vary from the device number to use to numerous aspects of how the driver should operate.
+
+Terminology
+When it comes to downloadable kernel modules, they are commonly referred to as kernel modules or simply modules. However, this terminology can be misleading due to the presence of various module types with distinct components integrated into the base kernel, all of which can be rightfully considered modules. For certain module types, we prefer using the terms kernel module or LKM. Some individuals mistakenly view LKMs as separate entities from the kernel, referring to them as modules that connect to the kernel. It is important to note that if loaded, LKMs become an integral part of the kernel. The appropriate term for the kernel component associated with the image you are launching is the "base kernel." LKMs connect to the base kernel. In certain operating systems, a comparable term for Linux LKMs is a "kernel extension."
+
+History of LKM
+Initially, loadable kernel modules were not part of the Linux framework. The functionalities we utilize as LKMs today were integrated into the base kernel during the kernel build process. However, LKMs have been in existence since at least Linux 1.2 (1995). Device drivers and other components were always designed in a modular fashion. When LKMs were introduced, a certain amount of effort was required to convert these components into LKMs, which was a time-consuming task. Since around 2000, there has been a growing trend to make nearly everything compatible with LKMs, providing the option to use them.
+
+The Case for LKM
+You often have the choice between installing a module in a kernel by uploading it as LKM or committing to it. base kernel. LKM has many benefits in addition to binding to the basic kernel. Another advantage is that you do not need to rebuild your kernel often. This saves time and saves you. you may have made a mistake in restructuring and refining the base kernel. Once you have a job base kernel, it is best to leave it untouched for as long as possible. Another advantage is that LKM helps you diagnose system problems. Disruption to the device driver in the kernel can stop your system from running at all. And it can be very difficult to say which part of the foundation kernel created a problem. If the driver of the same LKM device, however, the base kernel is active again before the device driver is loaded. It is easy to track a problem when your system dies once you turn on/off the base kernel until the device driver causes the problem and we do not load the device drive until we fix the problem.
+
+LKMs can save your memory because you should only download them if you really use them. All parts of the base kernel are loaded at all times - in real storage, not virtual storage. LKMs are very quick to maintain and repair. What may require a full restart to be done with the file system driver built into the kernel, you can do it with a few quick commands with LKM. You can try different parameters or change the code repeatedly in quick succession, without waiting for the boot. LKMs do less, by the way, than base kernel modules. Calling anywhere is just a branch in the place of memory where it resides. Sometimes you have to build something in the base kernel instead of making it LKM. Anything that exists that is needed to move the system far enough to load LKMs should obviously be built into the base kernel. 
+
+What are LKMs used for?
+Let's look at the major 6 LKMs used.
+
+Device drivers: The device driver is designed for a specific piece of hardware. The kernel uses it to contact that piece of hardware without knowing any hardware details it works. For example, there is an ATA disk drive device driver. There is one for the NE2000 compatible Ethernet cards. In order to use any device, the kernel must contain a driver for its device.
+Filesystem drivers: The file system driver interprets the contents of the file system such as files and references and more. There are a lot of ways to save files and references. By all means, you need a file system driver. For example, there is an ext2 file type file system driver used almost all over the world on Linux disk drives. There is also one MS-DOS file system, as well as one NFS.
+System calls: Userspace applications use system calls to access resources in the kernel. For example, there are system calls to read the file, create a new process, and close the program. Most System phones are part of the system and are state-of-the-art, so they are always built into the base kernel (no LKM option). But you can configure your system phone and install it as LKM. Or you can decide you don't like the way Linux does something and issue an existing system call with Your LKM.
+Network drivers: The network operator interprets the network protocol. It feeds and consumes data streams at various stages of kernel communication activity. For example, if you want an IPX link to your own network, you will use an IPX driver.
+TTY line instructions: This is actually an upgrade of device drivers to storage devices.
+Useful interpreters: Usable translator uploads and uses usable. Linux is designed for that to be able to use in a variety of formats, and each must have its own usable translator.
+Compiling Kernel Modules
+ The below example shows how our kernel module gets parameters from users at load time by insmod or modprobe command.
+
+Example Code:
+
+
+
+
+#include <linux/init.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
+​
+static char* whoisthis = "Mommy";
+static int countpeople = 1;
+​
+module_param(countpeople, int, S_IRUGO);
+module_param(whoisthis, charp, S_IRUGO);
+​
+static int __init m_init(void)
+{
+    pr_debug("parameters test module is loaded\n");
+    for (int i = 0; i < countpeople; ++i) {
+        pr_info("#%d Hello, %s\n", i, whoisthis);
+    }
+    return 0;
+}
+​
+static void __exit m_exit(void)
+{
+    pr_debug("parameters test module is unloaded\n");
+}
+​
+module_init(m_init);
+module_exit(m_exit);
+M ODULE_LICENSE("GPL");
+Shell:
+Build the module. To build this module, execute:
+
+bash make KERNELDIR=/path/to/kernel/source/dir
+
+
+
+If you have already set and exported the `KERNELDIR` environment variable, simply executing `make` is enough.
+
+Usage:
+Copy the object file **hello_world.ko** to the target machine, then run:
+
+bash insmod module_parameters.ko
+Running `dmesg | tail -10`, you can find something like this:
+
+[ 1223.506799] parameters test module is loaded [ 1223.509953] #0 Hello, Mommy
+
+
+
+It is right that by default, we set to print **hello, Mommy** only one time. Next, we unload this module and pass parameters to it when loading.
+
+bash # Unloading using rmmod command rmmod module_parameters # Reloading the module and passing parameters to itre-load the module and passing parameters to it insmod module_parameters.ko whoisthis=dady countpeople=3    
+
+
+
+This time, the message is changed:
+
+[ 1322.364784] parameters test module is loaded
+[ 1322.366768] #0 Hello, dady
+[ 1322.367999] #1 Hello, dady
+[ 1322.369154] #2 Hello, dady
+Conclusion
+
+
+*****************
+Loadable Kernel Module - Linux Device Driver Development
+Last Updated : 23 Jul, 2025
+For Linux device drivers, we can use only two languages: Assembler and C. Assembler implements the main parts of the Linux kernel, while C implements the architecture-dependent parts. Uploaded kernel modules are often referred to as kernel modules or modules, but those are misleading names because there are so many types of modules in the world, and the various pieces built into the base kernel can easily be called modules. We use the term kernel module or LKM for certain types of modules that HOWTO refers to. Some people think of LKM as outside the kernel. They talk about LKMs that connect to the kernel. This is a mistake; LKM (if loaded) is a large part of the kernel. The correct term for the part of the kernel tied to the image you are launching, i.e. the whole kernel except LKMs, is "base kernel." LKM connects to the base kernel. Let's start writing a Loadable Kernel Module for Linux with the evergreen start program - The " Hello -World ".
+
+To Know More about Loadable Kernel Modules, Visit linux loadable kernel module
+
+Step 1: Write the Code
+Sample File: Learn. c 
+
+
+#include <linux/init.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
+MODULE_LICENSE("GPL");
+MODULE_VERSION("4.15.0-133-generic");
+static int __init start(void)
+{
+    printk(KERN_INFO "Loading module....");
+    printk(KERN_INFO "Hello World....");
+    return 0;
+}
+
+static void __exit end(void)
+{
+    printk(KERN_INFO "Bye World....");
+}
+module_init(start);
+module_exit(end);
+Click to enlarge
+Fig 1.1 Learn.c File
+Description : 
+
+The my_init function is the driver initialization entry point and is called during system startup (if the driver is statically compiled into the kernel) or when the module is inserted into the kernel. The my_exit function is the driver exit point. It’s called when unloading a module from the Linux kernel. This function has no effect if the driver is statically compiled into the kernel. These functions are declared in the linux/module.h header file. 
+
+Step 2: Building the Kernel Module
+In modern kernel versions, the Makefile takes care of most of the building for developers. It starts the kernel build system and provides a list of components required to build the module. We are Giving the build path of the kernel version and it generates .ko and other files. This Kernel Object (KO) file generated will not be loaded into the Kernel.
+
+Sample MakeFile
+
+obj-m += learn.o
+all:
+ make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+Click to enlarge
+ Fig 1.2 A Simple Makefile
+Click to enlarge
+Fig 1.3 - After running the make command
+Click to enlarge
+Fig 1.4 - After Make command, we see the object file is generated
+Step  3: insmod and rmmod
+To load the module, we have to execute the insmod command from the source file folder. After this, the name of the driver is added to the /proc/modules file, while the device that the module registers is added to the /proc/devices file. Then we need to create the special character file for our major number with the mknod /dev/simple-driver c  250 0 commands. After we’ve created the device file, we need to perform the final verification to make sure that what we’ve done works as expected. To verify, we can use the cat or dmesg to see the messages command to display the device file contents.
+
+Sample Output logs
+
+1) Inserting module and viewing the messages
+
+
+ubuntu@ubuntu:~/Desktop/LKM$ sudo insmod learn.ko 
+
+
+ubuntu@ubuntu:~/Desktop/LKM$ dmesg | tail -10 
+
+
+[ 1179.315828] audit: type=1400 audit(1645410095.127:35): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.hook.configure" pid=4520 comm="apparmor_parser" 
+
+
+[ 1181.044041] audit: type=1400 audit(1645410096.856:36): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.snap-store" pid=4521 comm="apparmor_parser" 
+
+
+[ 1182.803700] audit: type=1400 audit(1645410098.616:37): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.ubuntu-software" pid=4522 comm="apparmor_parser" 
+
+
+[ 1184.677654] audit: type=1400 audit(1645410100.492:38): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.ubuntu-software-local-file" pid=4526 comm="apparmor_parser" 
+
+
+[ 1282.734538] rfkill: input handler disabled 
+
+
+[ 5315.486562] learn: module verification failed: signature and/or required key missing - tainting kernel 
+
+
+[ 5315.486700] Loading module.... 
+
+
+[ 5315.486702] Hello World....
+
+
+Click to enlarge
+Fig 1.5 - Logs after the module is inserted
+2) Removing Module using rmmod command and exit function is invoked
+
+
+ubuntu@ubuntu:~/Desktop/LKM$ sudo rmmod learn 
+
+
+ubuntu@ubuntu:~/Desktop/LKM$ dmesg | tail -10 
+
+
+[ 1181.044041] audit: type=1400 audit(1645410096.856:36): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.snap-store" pid=4521 comm="apparmor_parser" 
+
+
+[ 1182.803700] audit: type=1400 audit(1645410098.616:37): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.ubuntu-software" pid=4522 comm="apparmor_parser" 
+
+
+[ 1184.677654] audit: type=1400 audit(1645410100.492:38): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.ubuntu-software-local-file" pid=4526 comm="apparmor_parser" 
+
+
+[ 1282.734538] rfkill: input handler disabled [ 5315.486562] learn: module verification failed: signature and/or required key missing - tainting kernel 
+
+
+[ 5315.486700] Loading module.... 
+
+
+[ 5315.486702] Hello World.... 
+
+
+[ 5340.195459] Bye World....
+
+
+
+
+*************************

@@ -1,0 +1,877 @@
+Introduction to Linux Shell and Shell Scripting
+Last Updated : 22 Jan, 2026
+Using any modern operating system like Linux, macOS, or Windows involves interacting with a shell, which interprets and executes user commands. In Linux, this interaction typically happens through the terminal, where users type commands for the shell to process.
+
+Before learning shell scripting, you must understand:
+
+Kernel
+Shell
+Terminal
+Kernel
+The kernel is a computer program that is the core of a computer's operating system, with complete control over everything in the system. It manages the following resources of the Linux system:
+
+File management
+Process management
+I/O management
+Memory management
+Device management etc.
+Complete Linux system = Kernel + GNUsystem utilities and libraries + other management scripts + installation scripts.
+
+Shell
+A shell is a special user program that provides an interface for the user to use operating system services. Shell accepts human-readable commands from users and converts them into something which the kernel can understand. It is a command language interpreter that executes commands read from input devices such as keyboards or from files. The shell gets started when the user logs in or starts the terminal.
+
+shell_in_os
+Linux Shell
+Shell is broadly classified into two categories –
+
+Command Line Shell
+Graphical shell
+Command Line Shell
+Shell can be accessed by users using a command line interface. A special program called Terminal in Linux/macOS, or Command Prompt in Windows OS is provided to type in the human-readable commands such as "cat", "ls" etc. and then it is being executed. The result is then displayed on the terminal to the user. A terminal in Ubuntu 25.04 system looks like this:
+
+linux command line
+linux command line
+In the above screenshot, the ls -l command is executed. This command lists all files and directories in the current working directory in a long listing format, displaying detailed information such as permissions, ownership, file size, and modification date.
+Working with the command-line interface (CLI) can be challenging for beginners since it requires memorizing numerous commands. However, it is an incredibly powerful tool — it allows users to store multiple commands in a file and execute them together, enabling automation of repetitive tasks. These files are known as batch files in Windows and shell scripts in Linux and macOS systems
+Graphical Shells
+Graphical shells provide means for manipulating programs based on the graphical user interface (GUI), by allowing for operations such as opening, closing, moving, and resizing windows, as well as switching focus between windows. Window OS or Ubuntu OS can be considered as a good example which provides GUI to the user for interacting with the program. Users do not need to type in commands for every action. A typical GUI in the Ubuntu system:
+
+GUI Shell
+GUI Shell
+There are several shells available for Linux systems like:
+
+BASH (Bourne Again Shell): It is the most widely used shell in Linux systems. It is used as default login shell in Linux systems and in macOS. It can also be installed on Windows OS.
+CSH (C Shell): The C shell's syntax and its usage are very similar to the C programming language.
+KSH (Korn Shell): The Korn Shell was also the base for the POSIX Shell standard specifications etc.
+Each shell does the same job but understands different commands and provides different built-in functions.
+
+Terminal
+A program which is responsible for providing an interface to a user so that he/she can access the shell. It basically allows users to enter commands and see the output of those commands in a text-based interface. Large scripts that are written to automate and perform complex tasks are executed in the terminal.
+
+To access the terminal, simply search in search box "terminal" and double-click it.
+open terminal
+open terminal
+Here you can see how the terminal looks of Red Hat Linux.
+terminal
+terminal
+Getting Started with Shell Scripting
+In the world of DevOps and system administration, automating repetitive tasks is key to saving time and reducing errors. That’s where shell scripting comes in. It allows you to write a series of commands in a file and run them all at once, just like a program. Whether it is setting up servers, managing files, or deploying code shell scripts make it fast, consistent, and effortless.
+
+Shell Script
+A shell script is a file containing a series of commands for the shell to execute. The shell itself is a command-line interpreter (CLI), while a shell script is a saved list of instructions (usually with .sh extension) like myscript.sh.
+
+Uses of Shell Scripts
+Here are the main reasons shell scripts are widely used in IT and DevOps:
+
+1. Automate Repetitive Tasks
+Shell scripts turn routine jobs like file cleanup, backups, or server updates into one-click actions, saving time and reducing manual effort
+
+2. Reliable and Consistent
+Shell scripts run the exact same steps every time, without mistakes. Once you write and test a script, you can count on it to perform tasks consistently whether it's setting up servers, cleaning up files, or running a deployment. This removes human error and ensures predictable results.
+
+3. Native Support on Unix/Linux Systems
+Shell scripting is natively supported on Unix-based systems, requiring no additional installations. The shell environment (like Bash or Zsh) is pre-installed, allowing scripts to run seamlessly across most Linux distributions and Unix-like operating systems.
+
+4. Great for Linking Commands to Work Together
+Shell scripts make it easy to link different commands together. You can pass the output of one command into another, filter data, or run tasks step by step all in one script. This helps automate complex jobs using simple building blocks.
+
+5. Ideal for IT, DevOps & Monitoring
+Shell scripts help automate important tasks like checking system health, setting up servers, and scheduling jobs to run at specific times (using tools like cron). In DevOps, they are widely used to speed up deployments and manage infrastructure without doing everything manually.
+
+6. Lightweight and Easy to Write
+They are interpreted, so there is no compile step. You can write a useful script in minutes, and test it instantly perfect for quick fixes and small tasks.
+
+Understanding Shell Scripts: Structure, Syntax, and Usage
+Shells are interactive, meaning they take user input and execute commands. But typing multiple commands repeatedly is inefficient.
+
+Instead, you can store commands in a file a shell script and run them when needed. These scripts are similar to Windows batch files and typically have a .sh extension.
+
+If you are familiar with languages like Python or C, you will find shell scripting easy to grasp. A shell script includes:
+
+Shell Keywords: if, else, break, etc.
+Shell Commands: cd, ls, echo, pwd, touch, etc.
+Functions
+Control Flow: if..then..else, case, loops, etc.
+Simple demo of shell scripting using Bash Shell
+If you work on a terminal, something you traverse deep down in directories. Then for coming few directories up in path we have to execute a command like this as shown below to get to the "python" directory:
+
+get to the “python” directory:
+get to the “python” directory:
+It is quite frustrating, so why not we can have a utility where we just have to type the name of directory and we can directly jump to that without executing the "cd ../" command again and again. Save the script as "jump.sh"
+
+# !/bin/bash
+
+# A simple bash script to move up to desired directory level directly
+
+function jump()
+{
+    # original value of Internal Field Separator
+    OLDIFS=$IFS
+
+    # setting field separator to "/"
+    IFS=/
+
+    # converting working path into array of directories in path
+    # eg. /my/path/is/like/this
+    # into [, my, path, is, like, this]
+    path_arr=($PWD)
+
+    # setting IFS to original value
+    IFS=$OLDIFS
+
+    local pos=-1
+
+    # ${path_arr[@]} gives all the values in path_arr
+    for dir in "${path_arr[@]}"
+    do
+        # find the number of directories to move up to
+        # reach at target directory
+        pos=$[$pos+1]
+        if [ "$1" = "$dir" ];then
+
+            # length of the path_arr
+            dir_in_path=${#path_arr[@]}
+
+            #current working directory
+            cwd=$PWD
+            limit=$[$dir_in_path-$pos-1]
+            for ((i=0; i<limit; i++))
+            do
+                cwd=$cwd/..
+            done
+            cd $cwd
+            break
+        fi
+    done
+}
+For now, we cannot execute our shell script because it does not have permissions. We have to make it executable by typing following command –
+
+$ chmod +x path/to/our/file/jump.sh
+Now to make this available on every terminal session, we have to put this in ".bashrc" file.
+
+".bashrc" is a shell script that Bash shell runs whenever it is started interactively. The purpose of a .bashrc file is to provide a place where you can set up variables, functions, and aliases, define our prompt, and define other settings that we want to use whenever we open a new terminal window.
+
+Now open the terminal and type the following command:
+
+$ echo “source ~/path/to/our/file/jump.sh”>> ~/.bashrc
+Now open your terminal and try out new "jump" functionality by typing following command-
+
+$ jump dir_name
+just like the below screenshot:
+
+jump dir_name
+
+
+
+***********************
+Understanding Terminal, Console, Shell and Kernel
+Last Updated : 28 Nov, 2025
+The terminal, console, shell, and kernel are fundamental components of an operating system that help users interact with a computer. Together, they connect user commands to system hardware through layers of software and interfaces.
+
+Terminal: A text-based interface where users type commands and receive output from the system.
+Console: The physical or virtual device that provides access for input and output operations.
+Shell: A command-line interpreter that translates user commands into actions performed by the operating system.
+Kernel: The core part of the operating system that manages hardware resources like memory, CPU, and devices.
+Terminal
+The Linux Terminal is a command-line interface that allows users to interact with the operating system using text commands. It gives direct, low-level access to system features without relying on a graphical interface. It provides more control, speed, and flexibility for advanced system operations and administrative tasks.
+
+Supports command execution and process handling
+Useful for system troubleshooting and performance monitoring
+Enables automation through shell scripting
+Provides access to system configurations
+Helps perform advanced system administration tasks
+Terminal_linux
+The terminal is just an interface that accepts user input and displays output. It does not understand commands itself, so it relies on another program - usually the shell - to interpret and execute them
+
+terminal_linux
+Key Functions:
+Takes user input in the form of commands
+Executes system-level operations
+Displays output and system responses
+Helps in automation and scripting
+Provides deep control over system resources
+Console
+The console is the primary interface that allows users to directly interact with the operating system through input and output devices. It can be a physical screen/keyboard or a virtual interface.
+
+Acts as a low-level communication interface with the OS
+Can work without a graphical environment
+Used during system boot and recovery scenarios
+Supports multiple virtual terminals
+In Windows, the Command Prompt opens a console window, which works similarly to the Linux terminal. However, the console is the underlying system interface, while the command prompt is the program running inside it.
+
+Console
+Shell
+The shell is a command-line interpreter that acts as a bridge between the user and the kernel. When you press Enter after typing a command, the terminal sends it to the shell for processing.
+
+The shell performs the following functions:
+
+Interprets user commands
+Checks command syntax and correctness
+Converts valid commands into a format understood by the kernel
+Forwards those commands to the kernel
+Displays errors if the command is incorrect
+Displays a new prompt for the next command
+Examples of shell programs include:
+Bash: The most widely used Linux shell, known for scripting, automation, and default availability on most systems.
+Zsh: An advanced shell with powerful customization, better autocomplete, and plugin support.
+Ksh: A Unix shell optimized for scripting with enhanced programming features.
+Tcsh: An improved version of the C Shell with command-line editing and history features.
+Fish Shell: A user-friendly shell with syntax highlighting, autosuggestions, and easy configuration.
+Note: On most Linux systems and macOS, the default shell is Bash or Zsh.
+
+shellshell
+Kernel
+The kernel is the core component of the operating system responsible for managing system resources and hardware communication. It executes the commands passed by the shell and interacts directly with hardware components.
+
+The kernel works with two main components:
+
+OS Libraries: Provide functions for applications (e.g., read(), write())
+Device Drivers: Allow communication with hardware like keyboard, disk, and display
+Kernel Responsibilities
+The kernel handles most of the core system operations and manages hardware and system resources; some of its major responsibilities are listed below.
+
+kernel_responsibilities
+1. Memory Management
+Allocates and deallocates system memory
+Ensures efficient use of RAM and prevents memory conflicts
+2. CPU (Process) Scheduling
+Manages process execution and task switching
+Allocates CPU time between running processes
+3. Device Management
+Controls communication with hardware devices
+Manages device drivers and hardware interrupts
+4. File System Management
+Organizes and manages data storage on disks
+Handles file access permissions and security
+5. Input/Output Handling
+Manages communication between software and hardware
+Handles data transfer between input and output devices
+
+
+************************
+Writing and executing shell scripts
+Last Updated : 4 Feb, 2026
+A shell script is a collection of commands written in a scripting language that is interpreted by a shell in an operating system such as Linux. The shell acts as a command-line interface (CLI), allowing users to interact with the operating system by executing commands.
+
+Shell scripts are commonly used to:
+
+Automate repetitive tasks
+Execute a sequence of commands
+Simplify system administration
+Improve efficiency and consistency
+Writing Your First Shell Script
+Step 1: Choose a Text Editor
+Before you start writing your shell script, you need a text editor. Popular choices include Nano, Vim, and Emacs. For beginners, Nano is user-friendly and easy to use:
+
+nano myscript.sh
+Step 2: Write Your Script
+Let's create a simple script that prints "Hello, World!" to the terminal:
+
+#!/bin/bash
+# This is a simple shell script
+
+echo "Hello, World!"
+Explanation:
+
+The first line (#!/bin/bash) is called the shebang. It specifies the shell that should be used to interpret the script.
+Lines starting with # are comments. They are ignored by the shell and help improve readability.
+The echo command prints text to the terminal.
+Step 3: Save and Exit
+Save the script by pressing , then  to confirm, and finally,  to exit.
+
+Step 4: Make the Script Executable
+To run the script, you need to make it executable:
+
+chmod +x myscript.sh
+Executing Shell Scripts
+Running the Script
+Now that your script is executable, you can run it by typing:
+
+./myscript.sh
+This will execute the commands in your script, and you should see "Hello, World!" printed to the terminal.
+
+Variables and Input
+Shell scripts can use variables to store and manipulate data. Here's an example:
+
+#!/bin/bash
+
+# Get user input
+echo "Enter your name:"
+read name
+
+# Print a greeting
+echo "Hello, $name!"
+Run the script, and it will prompt you to enter your name.
+
+Control Flow
+Shell scripts support basic control flow structures like , , and  loops. Here's a simple example:
+
+#!/bin/bash
+
+echo "Enter a number:"
+read num
+
+if [ $((num % 2)) -eq 0 ]; then
+  echo "$num is even."
+else
+  echo "$num is odd."
+fi
+
+
+**********************************
+Shell Scripting - Different types of Variables
+Last Updated : 28 Sep, 2022
+The shell is a command-line interpreter for Linux and Unix systems. It provides an interface between the user and the kernel and executes commands.  A sequence of commands can be written in a file for execution in the shell. It is called shell scripting. It helps to automate tasks in Linux.
+
+Scripting language also has concepts of different types of variables like procedural or object-oriented languages. 
+
+In shell scripting there are three main types of variables are present. They are -
+
+Local Variables 
+Global Variables or Environment Variables
+Shell Variables or System Variables
+We will discuss them one by one in this article -
+
+Local Variable
+A local variable is a special type of variable which has its scope only within a specific function or block of code. Local variables can override the same variable name in the larger scope. Let's understand this concept using an example -
+
+Shell script:
+
+#!/bin/sh
+
+getName(){
+NAME=SATYAJIT #local variable
+echo "$NAME (from function)" #valid if called using function
+}
+
+echo "$NAME - (outside function)" #invalid here 
+getName 
+Output:
+
+ - (outside function)
+SATYAJIT (from function)
+In this example, NAME is a local variable and its scope is limited within the getName() function. So, when we try to call it from outside the function, there is nothing in output. Next, when we call the function then it's displayed on the output screen.  Below is the terminal shell pictorial depiction after executing the following shell script :-
+
+Click to enlarge
+ 
+Global Variables
+A global variable is a variable with global scope. It is accessible throughout the program. Global variables are declared outside any block of code or function.  Let's understand this concept using an example -
+
+Shell script:
+
+#!/bin/sh
+
+NAME=SATYAJIT #global variable
+
+getName(){
+echo "$NAME (from function)" 
+}
+
+echo "$NAME - (outside function)" 
+getName 
+Output:
+
+SATYAJIT - (outside function)
+SATYAJIT (from function)
+Now, we have updated the earlier example code and declared the variable NAME outside any function. It makes the NAME variable a global variable that has its scope all over the program. Thus, it can be accessed from inside or outside a function. Below is the terminal shell pictorial depiction after executing the following shell script:-
+
+Click to enlarge
+ 
+Though, if we execute another shell script from a shell script, then local and global variables will be ignored by the new shell. Thus, if we want to make variables truly global, then we have to use the export command. Let's understand this concept using an example -
+
+Shell script:
+
+gfg_1.sh
+
+#!/bin/sh
+NUM=9
+echo "gfg_1 : The value is $NUM"
+export NUM
+./gfg_2.sh
+gfg_2.sh
+
+#!/bin/sh
+echo "gfg_2 : The value is $NUM"
+Output
+
+gfg_1 : The value is 9
+gfg_2 : The value is 9
+Here, the NUM variable is accessible even from the other shell script (gfg_2.sh). This is because we have used the export command in gfg_1.sh . If we don't use the export command, then the NUM variable value will not be visible from gfg_2.sh. Below is the terminal shell pictorial depiction after executing the following shell script -
+
+Click to enlarge
+ 
+Shell Variables
+These are special types of variables. They are created and maintained by Linux Shell itself. These variables are required by the shell to function properly  They are defined in Capital letters and to see all of them, we can use set / env / printenv command. Below is the terminal shell pictorial depiction after executing the following command:-
+
+Click to enlarge
+ 
+Some useful shell variables are -
+
+
+************************
+Bash Scripting - Introduction to Bash and Bash Scripting
+Last Updated : 23 Jul, 2025
+Bash is a command-line interpreter or Unix Shell and it is widely used in GNU/Linux Operating System. It is written by Brian Jhan Fox. It is used as a default login shell for most Linux distributions. Scripting is used to automate the execution of the tasks so that humans do not need to perform them individually. Bash scripting is a great way to automate different types of tasks in a system. Developers can avoid doing repetitive tasks using bash scripting. 
+
+Bash is like a robot assistant for your computer. It lets you control your Linux/Unix system by typing commands (e.g., ls to list files). Instead of doing tasks manually, you can write a Bash script—a text file with commands—to automate things like organizing files, installing software, or backing up data.
+
+How to Write Your First Bash Script
+Let’s create a simple script that says "Hello, World!":
+
+First, we will create a file with the .sh extension.
+Next, we will write down the bash scripts within it
+After that, we will provide execution permission to it.
+1. Create a Script File:
+Open a terminal and type:
+
+gedit hello.sh       # Creates a file named "hello.sh"  
+2. Add Code:
+Type these lines into the file:
+
+#!/bin/bash                # Tells the computer: "Use Bash to run this!"  
+echo "Hello, World!"         # Prints "Hello, World!" on the screen  
+3. Make It Executable:
+Save the file, then type:
+
+chmod +x hello.sh        # Gives permission to run the script   
+4. Run It:
+Use the below command to execute the script:
+
+./hello.sh 
+Click to enlarge
+Here the script file name is gfg.sh.
+
+Now we can also write more complicated commands using Bash Scripts. Here is an example below in which we are using a condition statement -
+
+Example Script:
+#!/bin/bash         
+Age=17
+if [ "$Age" -ge 18 ]; then
+    echo "You can vote"
+else
+    echo "You cannot vote"    
+fi
+Output:
+
+You cannot vote
+Here is the terminal shell pictorial depiction after executing the above script as follows:  
+
+Click to enlarge
+In the above way, we can execute multiple Bash commands all at once.
+
+Key Concepts of Bash Scripting
+Here are some key concept of bash scripti:
+
+File Names and Permissions
+In the above example, we have saved the file using gfg.sh name and also provided execute permission using chmod command. Now, let's understand why we have done that. 
+
+While writing bash scripts we should save our file with the .sh extension, so that the Linux system can execute it. When we first create a file with the .sh extension, it doesn't have any execute permission and without the execute permission the script will not work. So, we should provide execute permission to it using the chmod command. 
+
+The filename of a bash script can be anything but by convention, it is recommended to use snake case ( my_bash_script.sh ) or hyphens ( my-bash-script.sh ) for naming a script file.
+
+Variables in bash
+We can use variables in bash scripting. Below is a sample program to understand the usage of variables in Bash scripts.
+
+Example Script:
+
+Name="SATYAJIT GHOSH"
+Age=20
+
+echo "The name is $Name and Age is $Age"
+Output of Variables:
+
+The name is SATYAJIT GHOSH and Age is 20
+So, here is have declared two variables Name and another one is Age. These variables are accessible using $Name and $Age. That means, we can declare a variable in a bash script using VariableName=Value and can access it using $VariableName. Here is the terminal shell pictorial depiction after executing the above script as follows:  
+
+Click to enlarge
+There are two types of variables present within Bash Scripting. Conventionally, If a variable, is declared inside a function then it is generally a local variable and if it is declared outside then it is a global variable. In the case of a bash script, this concept is a little bit different, here any variable whether it is written inside a function or outside a function by default is a global variable. If we want to make a local variable then we need to use the keyword "local".
+
+Note: It is best practice to always use a local variable inside a function to avoid any unnecessary confusion.  
+
+An example of the same is given below -
+
+Example Script:
+
+#!/bin/bash
+
+var1="Apple" #global variable
+myfun(){
+    local var2="Banana" #local variable
+    var3="Cherry" #global variable
+    echo "The name of first fruit is $var1"
+    echo "The name of second fruit is $var2"
+}
+myfun #calling function
+
+echo "The name of first fruit is $var1"
+#trying to access local variable
+echo "The name of second fruit is $var2"
+echo "The name of third fruit is $var3"
+Output of local and global variables:
+
+The name of first fruit is Apple
+The name of second fruit is Banana
+The name of first fruit is Apple
+The name of second fruit is 
+The name of third fruit is Cherry
+Here in this above example, var2 is a local variable, so when we are accessing it from the function it is doing fine but when we are trying to access it outside the function, it is giving us an empty result in the output.
+
+On the other hand, unlike programming languages, even though var3 is defined inside a function still it is acting as a global variable and it can be accessed outside the function. Below is the terminal shell depiction after executing the script -
+
+Click to enlarge
+For more details refer Shell Scripting – Shell Variables
+
+Input and Output in bash
+Input & output are fundamental concepts for shell scripting. A script can take one or more inputs and can also produce zero or many outputs. It may even produce some errors.  Let's understand this with an example -
+
+Example Script:
+
+echo "Enter filename"
+read filename
+
+if [ -e $filename ]
+then
+echo "$filename is exits on the directory"
+cat $filename
+
+else
+    cat > $filename
+    echo "File created"
+fi
+Output of Input & Output:
+
+First time:
+
+Enter filename
+geeks.txt
+Hello Geek
+File created
+Second time:
+
+Enter filename
+geeks.txt
+geeks.txt is exits on the directory
+Hello Geek
+So, in this above example the first time, the script could not find any file with that file name, and the else block gets executed. It created the file and put some data into that file. When we run it a second time with the same file name, then it finds the file. So, is the if block gets executed and that displays the contents of the file.  Reading the file contents is input and on the first time putting data into the file is considered to be output. Here we have used > for storing the content in a file.  The > notation is used to redirect stdout to a file. On the other hand, we can use  2> notation to redirect stderr, and &>  to redirect both stdout and stderr.
+
+Below is the terminal shell pictorial depiction after executing the following script - 
+
+Click to enlarge
+For more details refer Shell Scripting – Standard Input, Output and Error
+
+Functions used in bash
+In programming, A function is a block of code that performs some tasks and it can be called multiple times for performing tasks. The simplest example of the use of function in Bash scripting can be given as -
+
+Example:
+
+#!/bin/bash
+#It is a function
+myFunction () {
+echo Hello World from GeeksforGeeks
+}
+
+#function call
+myFunction 
+Output of Functions:
+
+Hello World from GeeksforGeeks
+The above example shows a function that prints something when called.
+
+So, the basic syntax for writing functions within a Bash Script will be -
+
+Syntax of Functions:
+
+#for defining
+function_name(){
+    commands
+    .....
+}
+
+function_name # for calling
+Besides this, we can also have functions with passing arguments and with return values.
+
+For more details refer Bash Scripting – Functions
+
+Decision Making in bash
+In programming, Decision Making is one of the important concepts. The programmer provides one or more conditions for the execution of a block of code. If the conditions are satisfied then those block of codes only gets executed.
+
+Two types of decision-making statements are used within shell scripting. They are -
+
+1. If-else statement:
+If else statement is a conditional statement. It can be used to execute two different codes based on whether the given condition is satisfied or not.
+
+There are a couple of varieties present within the if-else statement. They are -
+
+if-fi 
+if-else-fi 
+if-elif-else-fi 
+nested if-else
+The syntax for the simplest one will be -
+
+Syntax of If-else statement:
+
+if [ expression ]; then
+
+    statements
+Example Script:
+
+Name="Satyajit"
+if [ "$Name" = "Satyajit" ]; then
+  echo "His name is Satyajit. It is true."
+Output of if-else statement:
+
+His name is Satyajit. It is true.
+In the above example, during the condition checking the name matches and the condition becomes true. Hence, the block of code present within the if block gets executed. In case the name doesn't match then will not have an output. Below is the terminal shell pictorial depiction after executing the following script - 
+
+Click to enlarge
+2. case-sac statement:
+case-sac is basically working the same as switch statement in programming. Sometimes if we have to check multiple conditions, then it may get complicated using if statements. At those moments we can use a case-sac statement. The syntax will be -
+
+Syntax of case-sac statement:
+
+case $var in
+   Pattern 1) Statement 1;;
+   Pattern n) Statement n;;
+esac
+Example Script:
+
+Name="Satyajit"
+case "$Name" in
+    #case 1
+    "Rajib") echo "Profession : Software Engineer" ;;
+    
+    #case 2
+    "Vikas") echo "Profession : Web Developer" ;;
+    
+    #case 3
+    "Satyajit") echo "Profession : Technical Content Writer" ;;
+esac
+Output of case-sac statement:
+
+Profession : Technical Content Writer
+In the above example, the case-sac statement executed the statement which is a part of the matched pattern here the 'Name'. Below is the terminal shell pictorial depiction after executing the following script - 
+
+Click to enlarge
+For more details refer Shell Scripting – Decision Making
+
+String and Numeric Comparisons
+The string comparison means in the shell scripting we can take decisions by doing comparisons within strings as well. Here is a descriptive table with all the operators -
+
+Operator	Description
+==	Returns true if the strings are equal
+!=	 Returns true if the strings are not equal
+-n	Returns true if the string to be tested is not null
+-z	Returns true if the string to be tested is null
+Arithmetic operators are used for checking the arithmetic-based conditions. Like less than, greater than, equals to, etc. Here is a descriptive table with all the operators -
+
+Operator	Description
+-eq	Equal
+-ge	Greater Than or Equal
+-gt	Greater Than
+-le	Less Than or Equal
+-lt	Less Than
+-ne	Not Equal
+Below is a simple example of the same -
+
+
+*******************************
+Shell Scripting - Difference between Korn Shell and Bash shell
+Last Updated : 22 Dec, 2022
+Korn Shell: 
+Korn Shell or KSH was developed by a person named David Korn, which attempts to integrate the features of other shells like C shell, Bourne Shell, etc. Korn Shell allows developers to generate and create new shell commands whenever it is required. Korn shell was developed a long year back as it is older than the BASH shell and it has fewer resources and has a limited scope of computer users. 
+
+There are various versions of Korn as pdksh, mksh, ksh93, and many more. There is the print command in Korn shell to print the message in the terminal which is better than echo in Bash Shell.
+
+Advantages of Korn-
+
+It provides much better performance while dealing with execution of scripts and commands.
+It provides more programming features and is considered to be superior than Bash.
+It handles loop very well.
+Disadvantages of Korn-
+
+As it is quite old, fewer resources are available only.
+Scripts are less readable.
+It does not have large community followers.
+Click to enlarge
+
+Bash Shell: 
+Bash or Bourne Again Shell is the identical similar shell to Bourne or .sh in Unix. Bash shell was developed by the Freeware Software and it is written and licensed under the GNU organization. This is the reason to make the Bash shell a public domain shell. Bash shell is free and open-source to use for computer users. 
+
+Some useful features of Bash shell are tab completion and setting a prompt to display the current directory. We can run the syntax of the other shell in Bash Shell without any problem. Bash Shell is a more recently developed shell by comparing it to other shells with lots of resources and features.
+
+Advantages of Bash
+
+It is a quick start.
+Availability of interactive debugging
+It is a fast and quicker mode of writing a shell script.
+ 
+Disadvantages of Bash
+
+Execution speed is slow.
+Need of extra focus and care to eliminate harmful circumstances.
+Design and Implementation flaws are there.
+
+
+*************************
+Shell Scripting - Interactive and Non-Interactive Shell
+Last Updated : 27 Jan, 2022
+A shell gives us an interface to the Unix system. While using an operating system, we indirectly interact with the shell. On Linux distribution systems, each time we use a terminal, we interact with the shell. The job of the shell is to interpret or analyze the Unix commands given by users. A shell accepts commands from the user and transforms them into a form that is understandable to the kernel. In other words, it acts as a mediator between ta user and the kernel unit of the operating system.
+
+Some of the features of a shell are listed below:
+
+Wildcard substitution in file names (pattern-matching)
+Command history
+Filename substitution
+Piping
+This article focuses upon the interactive and non-interactive shell.
+
+Interactive shell:
+An interactive shell is defined as the shell that simply takes commands as input on tty from the user and acknowledges the output to the user. This shell also reads startup files that occurred during activation and displays a prompt. It also enables job control by default. It is also clear from the name, it is a shell with which we can interact. An interactive script is a script that requires input from the user. Interactive scripts couldn't run in the background as they required input from the user. For an interactive shell, the prompt variable necessarily is set to ($PS1).
+
+For example, a bash shell is an interactive shell. 
+
+How to start an interactive shell?
+We can start an interactive shell by giving the name of the shell after we logged into the system.
+
+For example,
+
+bash
+This will start bash shell.
+
+Non-interactive shell:
+As the name implies, a non-interactive shell is a type of shell that doesn't interact with the user. We can run it through a script or similar. Also, it can be run through some automated process. In this case  .bashrc and .profile files do not get executed. The non-interactive shell influences the PATH variable. It is highly recommended to use the full path for a command in non-interactive shells. Non-interactive scripts can smoothly run in the background easily. This shell is generally a non-login shell because the calling user has logged in already. A shell that runs a script is always considered a non-interactive shell.
+
+Scripts like Init and startup are considered non-interactive since they must run without human intervention.
+
+How to check which type of shell is being used?
+The type of shell being used can be detected (BASH only). We can determine if we are using an interactive or non-interactive shell by,
+
+
+
+[[ $- == *i* ]] && echo 'Interactive' || echo 'not-interactive'
+
+
+************************
+Shell Script to Show the Difference Between echo “$SHELL” and echo ‘$SHELL’
+Last Updated : 24 Apr, 2023
+In shell scripting and Linux, the echo command is used to display text on the terminal or console. When used with the $SHELL variable, which contains the path of the current user's shell program, the output of the echo command can be different depending on whether the variable is enclosed in single or double quotes.
+
+echo "$SHELL" will expand the $SHELL variable and display the value of the variable on the terminal. The double quotes allow for variable expansion, so the output will be the path of the current user's shell program.
+
+echo '$SHELL' will not expand the $SHELL variable and will display the literal text $SHELL on the terminal. The single quotes treat all characters within the quotes as literal text, so the output will be the string "$SHELL" itself, rather than the value of the variable.
+
+It is important to note that using single or double quotes can affect the way variables and special characters are interpreted in shell scripting and Linux. As mentioned in the previous answer, single quotes treat all characters within the quotes as literal text, while double quotes allow for the expansion of variables and special characters.
+
+When shell commands are executed with the help of the file this is called shell scripting. In this article, we will understand how shell commands work? How to use commands more efficiently? And understand the logic of interpretation of commands on shell. Bash or Bourne Again Shell is the most widely used shell, it comes pre-installed in most of the Linux distributions.
+
+Difference Between echo “$SHELL” and echo ‘$SHELL’ are as follows:
+
+Feature 	echo "$SHELL" 	echo "$SHELL" 
+Variable expansion 	Yes 	No
+ 
+Special character expansion 	Yes 	No
+ 
+Output 	Displays the value of the $SHELL variable 	Displays the string "$SHELL"
+ 
+Use case 	When the value of the $SHELL variable needs to be displayed 	When the literal string "$SHELL" needs to be displayed
+ 
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Single quote Interpretation:
+The single quote will not interpret anything like variables, backslash, etc. into other forms. For example:
+
+# h = 5
+# echo '$h'
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+
+
+$: $ sign is used in the shell to retrieve the value of variables.
+
+
+
+
+
+echo: echo command is used to print the text or string to the shell or output file.
+
+
+
+Here we initialized a variable name "h" and 5 to it, and then we used the echo command to print the value using $ sign in single quotes. Now let us try this on a predefined variable named SHELL, this predefined variable stores the path of the shell.
+
+# echo '$SHELL'
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Even though the variable SHELL contains the path of the shell it did not print the path on output because we used single quote ' '.
+
+Shell Script:
+
+Same thing we could do using a file and making it executable and running it will produce similar output.
+
+We will use:
+
+nano: It is a command-line text editor for Linux distros.
+cat: cat command will be used to see the content of a file.
+chmod: This command will be used to grant permission to be executable.
+Open a file in nano editor name it program.sh. ".sh" extension is used for shell script files.
+
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Write content to file:
+
+h = 5
+echo '$h'
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Press ctrl + o to save and press ctrl + x to exit, now give permission to program.sh file to execute:
+
+# chmod 777 program.sh
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Run the file:
+
+# ./program.sh
+Click to enlarge
+
+Double quote Interpretation:
+The double-quote will interpret commands with variables, backslash etc. Double quotes are really helpful when working with various variables and user inputs. Let's take the same examples:
+
+# h = 5
+# echo "$h"
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Yes, this time the real value of h is printed as " " interpret the special cases present in the statement. Similarly, now just check it with the predefined variables like SHELL.
+
+# echo "$SHELL"
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Shell Script:
+Now let us try the whole thing using a shell script file.
+
+Open a file name newProgram.sh using nano editor:
+
+# nano newProgram.sh
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Write the content given below:
+
+h = 5
+echo "$h"
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Give permission to make it executable:
+
+# chmod +x newProgram.sh
+Click to enlarge
+
+Run the file to see the output:
+
+# ./newProgram.sh
+Shell Script to explain the difference between echo “$SHELL” and echo ‘$SHELL’
+
+Below is the table to understand the behavior of single and double quotes. First, we initialize some variables.
+
+# name = (hemant)
+# number = 40
+
+
+*******************************
